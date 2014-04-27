@@ -4,8 +4,17 @@
 
 More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html)
 
-This module contains truly matchers collections of objects, including
-`Array`, `ArraySet`, and `ArrayMap`.
+The library contains a collection of convenient Hamcrest matchers. For example:
+
+```java
+import com.jcabi.matchers.XhtmlMatchers;
+import org.hamcrest.MatcherAssert;
+
+MatcherAssert.assertThat(
+  "<test><name>Jeff</name></test>",
+  XhtmlMatchers.hasXPath("/test/name[.='Jeff']");
+);
+```
 
 You need just this dependency:
 
@@ -13,7 +22,7 @@ You need just this dependency:
 <dependency>
   <groupId>com.jcabi</groupId>
   <artifactId>jcabi-matchers</artifactId>
-  <version>1.1</version>
+  <version>1.0</version>
 </dependency>
 ```
 
