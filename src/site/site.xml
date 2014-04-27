@@ -57,6 +57,10 @@
             <item name="Test coverage" href="./cobertura/index.html"/>
             <item name="Release History" href="https://github.com/jcabi/jcabi-matchers/releases"/>
         </menu>
+        <menu name="Examples">
+            <item name="XHTML Matchers" href="./xhtml-matchers.html"/>
+            <item name="JAXB Converter" href="./jaxb-converter.html"/>
+        </menu>
         <menu ref="reports"/>
     </body>
 </project>

@@ -53,7 +53,7 @@ import lombok.ToString;
  * import javax.xml.bind.annotation.XmlRootElement;
  * &#64;XmlRootElement(name = "employee")
  * &#64;XmlAccessorType(XmlAccessType.NONE)
- * private static final class Employee {
+ * public class Employee {
  *   &#64;XmlElement(name = "name")
  *   public String getName() {
  *     return "John Doe";

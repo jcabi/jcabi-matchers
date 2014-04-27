@@ -1,5 +1,5 @@
  ------
- Hamcrest Matchers
+ XHTML Hamcrest Matchers
  ------
  Yegor Bugayenko
  ------
@@ -36,63 +36,41 @@
 ~~ OF THE POSSIBILITY OF SUCH DAMAGE.
 ~~
 
-Hamcrest Matchers
+XHTML Hamcrest Matchers
 
-  This library contains a few convenient utils for Hamcrest matching, including:
-
-   * {{{./xhtml-matchers.html}<<<XhtmlMatchers>>>}} -
-     matches XML and XHTML with XPath;
-
-   * {{{./jaxb-converter.html}<<<JaxbConverter>>>}} -
-     converts JAXB-annotated objects into XML.
-
-  The only dependency you need is
-  (you can also download
-  {{{http://repo1.maven.org/maven2/com/jcabi/jcabi-matchers/${project.version}/jcabi-matchers-${project.version}.jar}<<<jcabi-matchers-${project.version}.jar>>>}}
-  and add it to the classpath):
+  {{{./apidocs-${project.version}/com/jcabi/matchers/XhtmlMatchers.html}<<<XhtmlMatchers>>>}}
+  is a utility class with static methods that create
+  XHTML Hamcrest matchers, to be used in unit tests, for example:
 
 +--
-<dependency>
-  <groupId>com.jcabi</groupId>
-  <artifactId>jcabi-matchers</artifactId>
-  <version>${project.version}</version>
-</dependency>
+import com.jcabi.matchers.XhtmlMatchers;
+import org.hamcrest.MatcherAssert;
+public class FooTest {
+  @Test
+  public void buildsValidXml() {
+    MatcherAssert.assertThat(
+      "<data><employee id='33'><name>Jeff</name></employee></data>",
+      XhtmlMatchers.hasXPath("/data/employee[@id=33]/name")
+    );
+  }
+}
 +--
 
-  Don't forget to add these two dependencies to your classpath:
+  Besides that, there is a convenient static method that
+  converts its input to XML, that correctly renders itself
+  in unit test output:
 
 +--
-<dependency>
-  <groupId>org.hamcrest</groupId>
-  <artifactId>hamcrest-core</artifactId>
-  <version>1.3</version>
-  <scope>test</scope>
-</dependency>
-<dependency>
-  <groupId>org.hamcrest</groupId>
-  <artifactId>hamcrest-library</artifactId>
-  <version>1.3</version>
-  <scope>test</scope>
-</dependency>
-+--
-
-* Cutting Edge Version
-
-  If you want to use current version of the product, you can do it with
-  this configuration in your <<<pom.xml>>>:
-
-+--
-<repositories>
-  <repository>
-    <id>oss.sonatype.org</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-  </repository>
-</repositories>
-<dependencies>
-  <dependency>
-    <groupId>com.jcabi</groupId>
-    <artifactId>jcabi-matchers</artifactId>
-    <version>2.0-SNAPSHOT</version>
-  </dependency>
-</dependencies>
+import com.jcabi.matchers.XhtmlMatchers;
+import org.hamcrest.MatcherAssert;
+public class FooTest {
+  @Test
+  public void buildsValidXml() {
+    Source source = // ... get it somewhere
+    MatcherAssert.assertThat(
+      XhtmlMatchers.xhtml(source),
+      XhtmlMatchers.hasXPath("/data/employee[@id=33]/name")
+    );
+  }
+}
 +--
