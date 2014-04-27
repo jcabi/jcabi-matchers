@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011-2013, ReXSL.com
+ * Copyright (c) 2011-2014, jcabi.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -9,7 +9,7 @@
  * disclaimer. 2) Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the following
  * disclaimer in the documentation and/or other materials provided
- * with the distribution. 3) Neither the name of the ReXSL.com nor
+ * with the distribution. 3) Neither the name of the jcabi.com nor
  * the names of its contributors may be used to endorse or promote
  * products derived from this software without specific prior written
  * permission.
@@ -27,16 +27,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.rexsl.test;
+package com.jcabi.matchers;
 
-import com.jcabi.aspects.Loggable;
 import com.jcabi.xml.XPathContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.validation.constraints.NotNull;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.Source;
 import lombok.EqualsAndHashCode;
@@ -62,7 +60,6 @@ import org.w3c.dom.Node;
  */
 @ToString
 @EqualsAndHashCode
-@Loggable(Loggable.DEBUG)
 public final class XhtmlMatchers {
 
     /**
@@ -93,8 +90,7 @@ public final class XhtmlMatchers {
      * @param <T> Type of source
      * @since 0.4.10
      */
-    @NotNull
-    public static <T> Source xhtml(@NotNull final T xhtml) {
+    public static <T> Source xhtml(final T xhtml) {
         Source source;
         if (xhtml instanceof Source) {
             source = Source.class.cast(xhtml);
@@ -102,7 +98,7 @@ public final class XhtmlMatchers {
             final InputStream stream = InputStream.class.cast(xhtml);
             try {
                 source = new StringSource(IOUtils.toString(stream));
-            } catch (IOException ex) {
+            } catch (final IOException ex) {
                 throw new IllegalArgumentException(ex);
             } finally {
                 IOUtils.closeQuietly(stream);
@@ -111,7 +107,7 @@ public final class XhtmlMatchers {
             final Reader reader = Reader.class.cast(xhtml);
             try {
                 source = new StringSource(IOUtils.toString(reader));
-            } catch (IOException ex) {
+            } catch (final IOException ex) {
                 throw new IllegalArgumentException(ex);
             } finally {
                 IOUtils.closeQuietly(reader);
@@ -130,8 +126,7 @@ public final class XhtmlMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
      */
-    @NotNull
-    public static <T> Matcher<T> hasXPath(@NotNull final String query) {
+    public static <T> Matcher<T> hasXPath(final String query) {
         return XhtmlMatchers.hasXPath(query, new XPathContext());
     }
 
@@ -152,8 +147,7 @@ public final class XhtmlMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
      */
-    @NotNull
-    public static <T> Matcher<T> hasXPath(@NotNull final String query,
+    public static <T> Matcher<T> hasXPath(final String query,
         final Object... namespaces) {
         return XhtmlMatchers.hasXPath(query, new XPathContext(namespaces));
     }
@@ -165,9 +159,8 @@ public final class XhtmlMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
      */
-    @NotNull
-    public static <T> Matcher<T> hasXPath(@NotNull final String query,
-        @NotNull final NamespaceContext ctx) {
+    public static <T> Matcher<T> hasXPath(final String query,
+        final NamespaceContext ctx) {
         return new XPathMatcher<T>(query, ctx);
     }
 
@@ -177,7 +170,6 @@ public final class XhtmlMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
      */
-    @NotNull
     public static <T> Matcher<T> hasXPaths(final String...xpaths) {
         final Collection<Matcher<? super T>> list =
             new ArrayList<Matcher<? super T>>(xpaths.length);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011-2013, ReXSL.com
+ * Copyright (c) 2011-2014, jcabi.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -9,7 +9,7 @@
  * disclaimer. 2) Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the following
  * disclaimer in the documentation and/or other materials provided
- * with the distribution. 3) Neither the name of the ReXSL.com nor
+ * with the distribution. 3) Neither the name of the jcabi.com nor
  * the names of its contributors may be used to endorse or promote
  * products derived from this software without specific prior written
  * permission.
@@ -27,7 +27,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.rexsl.test.html;
+package com.jcabi.matchers;
 
 import com.jcabi.http.Response;
 import com.jcabi.http.response.XmlResponse;
@@ -46,7 +46,7 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 
 /**
- * Matches HTTP header against required value.
+ * Finds broken links in HTML.
  *
  * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
@@ -86,8 +86,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
         description.appendText(
             Logger.format(
                 "%d broken link(s) found: %[list]s",
-                this.broken.size(),
-                this.broken
+                this.broken.size(), this.broken
             )
         );
     }
@@ -108,10 +107,8 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
             )
         );
         Logger.debug(
-            this,
-            "#assertThat(): %d links found: %[list]s",
-            links.size(),
-            links
+            this, "#assertThat(): %d links found: %[list]s",
+            links.size(), links
         );
         this.broken.clear();
         for (final String link : links) {
@@ -141,17 +138,15 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
             } else {
                 Logger.warn(
                     NoBrokenLinks.class,
-                    "#isValid('%s'): not valid since responde code=%d",
-                    uri,
-                    code
+                    "#isValid('%s'): not valid since response code is %d",
+                    uri, code
                 );
             }
-        } catch (MalformedURLException ex) {
+        } catch (final MalformedURLException ex) {
             Logger.warn(
                 NoBrokenLinks.class,
                 "#isValid('%s'): invalid URL: %s",
-                uri,
-                ex.getMessage()
+                uri, ex.getMessage()
             );
         }
         return valid;
@@ -169,22 +164,20 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
                 HttpURLConnection.class.cast(url.openConnection());
             try {
                 code = conn.getResponseCode();
-            } catch (IOException ex) {
+            } catch (final IOException ex) {
                 Logger.warn(
                     NoBrokenLinks.class,
                     "#http('%s'): can't get response code: %s",
-                    url,
-                    ex.getMessage()
+                    url, ex.getMessage()
                 );
             } finally {
                 conn.disconnect();
             }
-        } catch (IOException ex) {
+        } catch (final IOException ex) {
             Logger.warn(
                 NoBrokenLinks.class,
                 "#http('%s'): can't open connection: %s",
-                url,
-                ex.getMessage()
+                url, ex.getMessage()
             );
         }
         return code;

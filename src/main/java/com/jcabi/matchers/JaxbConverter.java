@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011-2013, ReXSL.com
+ * Copyright (c) 2011-2014, jcabi.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -9,7 +9,7 @@
  * disclaimer. 2) Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the following
  * disclaimer in the documentation and/or other materials provided
- * with the distribution. 3) Neither the name of the ReXSL.com nor
+ * with the distribution. 3) Neither the name of the jcabi.com nor
  * the names of its contributors may be used to endorse or promote
  * products derived from this software without specific prior written
  * permission.
@@ -27,12 +27,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.rexsl.test;
+package com.jcabi.matchers;
 
-import com.jcabi.aspects.Loggable;
-import com.jcabi.log.Logger;
 import java.io.StringWriter;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -66,8 +63,8 @@ import lombok.ToString;
  * <p>Now you want to test how it works with real data after convertion
  * to XML (in a unit test):
  *
- * <pre> import com.rexsl.test.JaxbConverter;
- * import com.rexsl.test.XhtmlMatchers;
+ * <pre> import com.jcabi.matchers.JaxbConverter;
+ * import com.jcabi.matchers.XhtmlMatchers;
  * import org.junit.Assert;
  * import org.junit.Test;
  * public final class EmployeeTest {
@@ -86,7 +83,6 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode
-@Loggable(Loggable.DEBUG)
 public final class JaxbConverter {
 
     /**
@@ -114,8 +110,7 @@ public final class JaxbConverter {
      * @todo #316 This "unchecked" warning should be removed somehow
      */
     @SuppressWarnings("unchecked")
-    public static Source the(@NotNull final Object object,
-        @NotNull final Class... deps)
+    public static Source the(final Object object, final Class<?>... deps)
         throws JAXBException {
         final Class<?>[] classes = new Class<?>[deps.length + 1];
         classes[0] = object.getClass();
@@ -171,14 +166,14 @@ public final class JaxbConverter {
         );
         if (type == null) {
             throw new AssertionError(
-                Logger.format(
+                String.format(
                     // @checkstyle LineLength (1 line)
-                    "@XmlType or @XmlRootElement annotation required at %[type]s",
-                    obj
+                    "@XmlType or @XmlRootElement annotation required at %s",
+                    obj.getClass().getName()
                 )
             );
         }
-        QName qname;
+        final QName qname;
         if ("##default".equals(type.namespace())) {
             qname = new QName(type.name());
         } else {

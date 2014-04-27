@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011-2013, ReXSL.com
+ * Copyright (c) 2011-2014, jcabi.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -9,7 +9,7 @@
  * disclaimer. 2) Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the following
  * disclaimer in the documentation and/or other materials provided
- * with the distribution. 3) Neither the name of the ReXSL.com nor
+ * with the distribution. 3) Neither the name of the jcabi.com nor
  * the names of its contributors may be used to endorse or promote
  * products derived from this software without specific prior written
  * permission.
@@ -27,11 +27,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.rexsl.test;
+package com.jcabi.matchers;
 
-import com.jcabi.aspects.Loggable;
 import com.jcabi.xml.XMLDocument;
-import javax.validation.constraints.NotNull;
 import javax.xml.namespace.NamespaceContext;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -49,19 +47,16 @@ import org.hamcrest.TypeSafeMatcher;
  */
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "xpath")
-@Loggable(Loggable.DEBUG)
 final class XPathMatcher<T> extends TypeSafeMatcher<T> {
 
     /**
      * The XPath to use.
      */
-    @NotNull
     private final transient String xpath;
 
     /**
      * The context to use.
      */
-    @NotNull
     private final transient NamespaceContext context;
 
     /**
@@ -69,15 +64,14 @@ final class XPathMatcher<T> extends TypeSafeMatcher<T> {
      * @param query The query
      * @param ctx The context
      */
-    XPathMatcher(@NotNull final String query,
-        @NotNull final NamespaceContext ctx) {
+    XPathMatcher(final String query, final NamespaceContext ctx) {
         super();
         this.xpath = query;
         this.context = ctx;
     }
 
     @Override
-    public boolean matchesSafely(@NotNull final T input) {
+    public boolean matchesSafely(final T input) {
         return !new XMLDocument(XhtmlMatchers.xhtml(input))
             .merge(this.context)
             .nodes(this.xpath)
@@ -85,7 +79,7 @@ final class XPathMatcher<T> extends TypeSafeMatcher<T> {
     }
 
     @Override
-    public void describeTo(@NotNull final Description description) {
+    public void describeTo(final Description description) {
         description.appendText("an XML document with XPath ")
             .appendText(this.xpath);
     }
