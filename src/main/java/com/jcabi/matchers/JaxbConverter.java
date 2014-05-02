@@ -107,9 +107,7 @@ public final class JaxbConverter {
      * @param deps Dependencies that we should take into account
      * @return DOM source/document
      * @throws JAXBException If an exception occurs inside
-     * @todo #316 This "unchecked" warning should be removed somehow
      */
-    @SuppressWarnings("unchecked")
     public static Source the(final Object object, final Class<?>... deps)
         throws JAXBException {
         final Class<?>[] classes = new Class<?>[deps.length + 1];
@@ -124,9 +122,11 @@ public final class JaxbConverter {
         final JAXBIntrospector intro = ctx.createJAXBIntrospector();
         Object subject = object;
         if (intro.getElementName(object) == null) {
+            @SuppressWarnings("unchecked")
+            final Class<Object> type = (Class<Object>) object.getClass();
             subject = new JAXBElement<Object>(
                 JaxbConverter.qname(object),
-                (Class<Object>) object.getClass(),
+                type,
                 object
             );
         }
