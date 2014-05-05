@@ -59,6 +59,7 @@
         </menu>
         <menu name="Examples">
             <item name="XHTML Matchers" href="./xhtml-matchers.html"/>
+            <item name="W3C Matchers" href="./w3c-matchers.html"/>
             <item name="JAXB Converter" href="./jaxb-converter.html"/>
         </menu>
         <menu ref="reports"/>
