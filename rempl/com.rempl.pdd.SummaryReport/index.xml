@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type='text/xsl' href='puzzles.xsl'?><puzzles>
-<puzzle>
-<ticket>316</ticket>
-<file>src/main/java/com/jcabi/matchers/JaxbConverter.java</file>
-<prefix>     * </prefix>
-<body>This "unchecked" warning should be removed somehow</body>
-<estimate>0</estimate>
-<lines>110-110</lines>
-<owner>someone</owner>
-</puzzle>
-</puzzles>
+<?xml-stylesheet type='text/xsl' href='puzzles.xsl'?><puzzles/>
