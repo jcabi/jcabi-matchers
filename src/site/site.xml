@@ -52,7 +52,7 @@
             <link href="https://plus.google.com/u/0/114792568016408327418?rel=author" rel="author"/>
         </head>
         <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
+            <item name="Introduction" href="./index.html"/>
             <item name="API ${project.version} (JavaDoc)" href="./apidocs-${project.version}/index.html"/>
             <item name="Test coverage" href="./cobertura/index.html"/>
             <item name="Release History" href="https://github.com/jcabi/jcabi-matchers/releases"/>
