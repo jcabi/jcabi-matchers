@@ -72,7 +72,7 @@ final class W3CValidatorMatcher extends TypeSafeMatcher<String> {
     }
 
     @Override
-    protected boolean matchesSafely(final String content) {
+    public boolean matchesSafely(final String content) {
         boolean matches = false;
         try {
             matches = this.validator.validate(content).valid();

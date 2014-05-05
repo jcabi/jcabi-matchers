@@ -103,11 +103,9 @@ final class StringSource extends DOMSource {
             final char chr = this.xml.charAt(pos);
             // @checkstyle MagicNumber (1 line)
             if (chr > 0x7f) {
-                buf.append("&#");
-                buf.append(
+                buf.append("&#").append(
                     Integer.toHexString(chr).toUpperCase(Locale.ENGLISH)
-                );
-                buf.append(';');
+                ).append(';');
             } else {
                 buf.append(chr);
             }
