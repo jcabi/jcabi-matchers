@@ -30,16 +30,17 @@
 package com.jcabi.matchers;
 
 import com.jcabi.xml.XPathContext;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.Source;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.commons.io.IOUtils;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.w3c.dom.Node;
@@ -97,21 +98,15 @@ public final class XhtmlMatchers {
         } else if (xhtml instanceof InputStream) {
             final InputStream stream = InputStream.class.cast(xhtml);
             try {
-                source = new StringSource(IOUtils.toString(stream));
-            } catch (final IOException ex) {
-                throw new IllegalArgumentException(ex);
-            } finally {
-                IOUtils.closeQuietly(stream);
+                source = new StringSource(
+                    readAsString(new InputStreamReader(stream, "UTF-8"))
+                );
+            } catch (final UnsupportedEncodingException ex) {
+                throw new IllegalStateException(ex);
             }
         } else if (xhtml instanceof Reader) {
             final Reader reader = Reader.class.cast(xhtml);
-            try {
-                source = new StringSource(IOUtils.toString(reader));
-            } catch (final IOException ex) {
-                throw new IllegalArgumentException(ex);
-            } finally {
-                IOUtils.closeQuietly(reader);
-            }
+            source = new StringSource(readAsString(reader));
         } else if (xhtml instanceof Node) {
             source = new StringSource(Node.class.cast(xhtml));
         } else {
@@ -177,5 +172,27 @@ public final class XhtmlMatchers {
             list.add(XhtmlMatchers.<T>hasXPath(xpath));
         }
         return Matchers.allOf(list);
+    }
+
+    /**
+     * Reads an entire reader's contents into a string.
+     * @param reader The stream to read
+     * @return The reader content, in String form
+     */
+    private static String readAsString(final Reader reader) {
+        @SuppressWarnings("resource")
+        final Scanner scanner =
+            new Scanner(reader).useDelimiter("\\A");
+        final String result;
+        try {
+            if (scanner.hasNext()) {
+                result = scanner.next();
+            } else {
+                result = "";
+            }
+        } finally {
+            scanner.close();
+        }
+        return result;
     }
 }

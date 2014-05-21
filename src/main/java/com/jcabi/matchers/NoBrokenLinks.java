@@ -41,7 +41,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 
@@ -97,14 +96,13 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
      */
     private void check(final Response response) {
         final Collection<String> links = new XmlResponse(response).xml().xpath(
-            StringUtils.join(
-                "//head/link/@href",
-                " | //body//a/@href",
-                " | //body//img/@src",
-                " | //xhtml:img/@src",
-                " | //xhtml:a/@href",
-                " | //xhtml:link/@href"
-            )
+            new StringBuilder("//head/link/@href")
+                .append(" | //body//a/@href")
+                .append(" | //body//img/@src")
+                .append(" | //xhtml:img/@src")
+                .append(" | //xhtml:a/@href")
+                .append(" | //xhtml:link/@href")
+                .toString()
         );
         Logger.debug(
             this, "#assertThat(): %d links found: %[list]s",
