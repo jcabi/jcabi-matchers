@@ -1,6 +1,7 @@
 <img src="http://img.jcabi.com/logo-square.png" width="64px" height="64px" />
 
 [![Build Status](https://travis-ci.org/jcabi/jcabi-matchers.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-matchers)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 
 More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html)
 
@@ -14,16 +15,6 @@ MatcherAssert.assertThat(
   "<test><name>Jeff</name></test>",
   XhtmlMatchers.hasXPath("/test/name[.='Jeff']");
 );
-```
-
-You need just this dependency:
-
-```xml
-<dependency>
-  <groupId>com.jcabi</groupId>
-  <artifactId>jcabi-matchers</artifactId>
-  <version>1.0</version>
-</dependency>
 ```
 
 ## Questions?
