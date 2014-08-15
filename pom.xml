@@ -33,7 +33,7 @@
     <parent>
         <groupId>com.jcabi</groupId>
         <artifactId>jcabi</artifactId>
-        <version>1.6.1</version>
+        <version>1.14</version>
     </parent>
     <artifactId>jcabi-matchers</artifactId>
     <version>1.1</version>
@@ -45,8 +45,8 @@
         <url>https://github.com/jcabi/jcabi-matchers/issues</url>
     </issueManagement>
     <ciManagement>
-        <system>rultor</system>
-        <url>http://www.rultor.com/s/jcabi</url>
+        <system>travis</system>
+        <url>https://travis-ci.org/jcabi/jcabi-matchers</url>
     </ciManagement>
     <scm>
         <connection>scm:git:github.com:jcabi/jcabi-matchers.git</connection>
