@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -141,8 +142,11 @@ public final class XhtmlMatchersTest {
     @Test
     public void convertsTextToXml() throws Exception {
         MatcherAssert.assertThat(
-            "<html><body><p>\u0443</p></body></html>",
-            XhtmlMatchers.hasXPath("/html/body/p[.='\u0443']")
+            StringUtils.join(
+                "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
+                "<p>\u0443</p></body></html>"
+            ),
+            XhtmlMatchers.hasXPath("/xhtml:html/xhtml:body/xhtml:p[.='\u0443']")
         );
     }
 

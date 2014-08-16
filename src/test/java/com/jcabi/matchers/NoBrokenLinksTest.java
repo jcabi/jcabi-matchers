@@ -51,7 +51,10 @@ public final class NoBrokenLinksTest {
     public void findsEmptyLinksInHtml() throws Exception {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
-                "<html><head><link rel='stylesheet' href=''/></head></html>"
+                StringUtils.join(
+                    "<html xmlns='http://www.w3.org/1999/xhtml'><head>",
+                    "<link rel='stylesheet' href=''/></head></html>"
+                )
             ).fetch(),
             Matchers.not(
                 new NoBrokenLinks(new URI("http://www.facebook.com/"))

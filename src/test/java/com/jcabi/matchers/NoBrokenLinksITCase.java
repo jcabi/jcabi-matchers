@@ -52,7 +52,7 @@ public final class NoBrokenLinksITCase {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
                 StringUtils.join(
-                    "<html><head>",
+                    "<html xmlns='http://www.w3.org/1999/xhtml'><head>",
                     "<link rel='stylesheet' href='http://localhost:7878'/>",
                     "</head></html>"
                 )
