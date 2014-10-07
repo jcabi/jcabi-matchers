@@ -48,7 +48,7 @@ public final class RegexMatchers {
      * Private ctor, it's a utility class.
      */
     private RegexMatchers() {
-        // Utility class, shoudln't be instantiated.
+        // Utility class, shouldn't be instantiated.
     }
 
     /**
@@ -63,8 +63,8 @@ public final class RegexMatchers {
      * @param pattern The pattern to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @todo #10 Let's create a convenience method
-     *  matchesAnyPattern(String...patterns) that should pass an assertion if
-     *  a string matches any of the given patterns.
+     *  matchesAnyPattern(String...patterns) that should pass if a string
+     *  matches any of the given patterns.
      */
     public static Matcher<String> matchesPattern(final String pattern) {
         return new RegexMatchingPatternMatcher(pattern);
@@ -77,16 +77,19 @@ public final class RegexMatchers {
      *
      * <pre> MatcherAssert.assert(
      *   "fooBar123",
-     *   RegexMatchers.containsPattern("bar123")
+     *   RegexMatchers.containsPattern("Bar12")
      * );</pre>
      *
      * @param pattern The pattern to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
+     * @todo #10 Let's create the following convenience methods:
+     *  1) containsAnyPattern(String...patterns), which should pass if a string
+     *  contains ANY of the given patterns, and
+     *  2) containsAllPatterns(String...patterns). which should pass if a string
+     *  contains ALL of the given patterns.
      */
     public static Matcher<String> containsPattern(final String pattern) {
-        throw new UnsupportedOperationException(
-            "containsPattern not yet implemented"
-        );
+        return new RegexContainingPatternMatcher(pattern);
     }
 
 }

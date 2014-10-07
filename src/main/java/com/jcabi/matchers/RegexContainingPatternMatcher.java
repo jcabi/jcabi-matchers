@@ -29,15 +29,15 @@
  */
 package com.jcabi.matchers;
 
-import com.jcabi.aspects.Immutable;
+import java.util.regex.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
 /**
- * Matcher of Regex patterns against a String, similar to
- * {@link String#matches(String)}.
+ * Checks if a given string contains a subsequence matching the given pattern,
+ * similar to {@link java.util.regex.Matcher#find()}.
  *
  * <p>Objects of this class are immutable and thread-safe.
  *
@@ -45,34 +45,33 @@ import org.hamcrest.TypeSafeMatcher;
  * @version $Id$
  * @since 1.3
  */
-@Immutable
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "pattern")
-final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
+final class RegexContainingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
      * The Regex pattern.
      */
-    private final transient String pattern;
+    private final transient Pattern pattern;
 
     /**
      * Public ctor.
      * @param regex The regular expression to match against.
      */
-    public RegexMatchingPatternMatcher(final String regex) {
+    public RegexContainingPatternMatcher(final String regex) {
         super();
-        this.pattern = regex;
+        this.pattern = Pattern.compile(regex);
     }
 
     @Override
     public void describeTo(final Description description) {
-        description.appendText("a String matching the regular expression ")
-            .appendText(this.pattern);
+        description.appendText("a String containing the regular expression ")
+            .appendText(this.pattern.toString());
     }
 
     @Override
     public boolean matchesSafely(final String item) {
-        return item.matches(this.pattern);
+        return this.pattern.matcher(item).find();
     }
 
 }

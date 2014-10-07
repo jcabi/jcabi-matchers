@@ -31,7 +31,6 @@ package com.jcabi.matchers;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -61,7 +60,6 @@ public final class RegexMatchersTest {
      * pattern.
      */
     @Test
-    @Ignore
     public void checksIfStringContainsPattern() {
         MatcherAssert.assertThat(
             "aardvark",
