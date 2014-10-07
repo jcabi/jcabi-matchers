@@ -46,7 +46,6 @@ public final class RegexMatchersTest {
      * RegexMatchers should be able to match a string against a given pattern.
      */
     @Test
-    @Ignore
     public void matchesStringToPattern() {
         MatcherAssert.assertThat(
             "abc123",

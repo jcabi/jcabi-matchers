@@ -29,64 +29,46 @@
  */
 package com.jcabi.matchers;
 
+import com.jcabi.aspects.Immutable;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.hamcrest.Matcher;
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 
 /**
- * Convenient matchers for checking Strings against regular expressions.
- *
+ * Matcher of Regex patterns against a String, similar to
+ * {@link String#matches(String)}.
  * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
  * @since 1.3
  */
+@Immutable
 @ToString
-@EqualsAndHashCode
-public final class RegexMatchers {
+@EqualsAndHashCode(callSuper = false, of = "pattern")
+public final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
-     * Private ctor, it's a utility class.
+     * The Regex pattern.
      */
-    private RegexMatchers() {
-        // Utility class, shoudln't be instantiated.
+    final String pattern;
+
+    /**
+     * Public ctor.
+     * @param regex The regular expression to match against.
+     */
+    public RegexMatchingPatternMatcher(final String regex) {
+        this.pattern = regex;
     }
 
-    /**
-     * Checks whether a String matches the given regular expression. Works in a
-     * similar manner to {@link String#matches(String)}. For example:
-     *
-     * <pre> MatcherAssert.assert(
-     *   "abc123",
-     *   RegexMatchers.matchesPattern("[a-c]+\\d{3}")
-     * );</pre>
-     *
-     * @param pattern The pattern to match against
-     * @return Matcher suitable for JUnit/Hamcrest matching
-     * @todo #10 Let's create a convenience method
-     *  matchesAnyPattern(String...patterns) that should pass an assertion if
-     *  a string matches any of the given patterns.
-     */
-    public static Matcher<String> matchesPattern(final String pattern) {
-        return new RegexMatchingPatternMatcher(pattern);
+    @Override
+    public void describeTo(final Description description) {
+        description.appendText("a String matching the regular expression ")
+            .appendText(this.pattern);
     }
 
-    /**
-     * Checks whether a String contains a subsequence matching the given regular
-     * expression. Works in a similar manner to
-     * {@link java.util.regex.Matcher#find()}. For example:
-     *
-     * <pre> MatcherAssert.assert(
-     *   "fooBar123",
-     *   RegexMatchers.containsPattern("bar123")
-     * );</pre>
-     *
-     * @param pattern The pattern to match against
-     * @return Matcher suitable for JUnit/Hamcrest matching
-     */
-    public static Matcher<String> containsPattern(final String pattern) {
-        throw new UnsupportedOperationException(
-            "containsPattern not yet implemented"
-        );
+    @Override
+    protected boolean matchesSafely(final String item) {
+        return item.matches(this.pattern);
     }
 
 }
