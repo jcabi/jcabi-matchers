@@ -6,7 +6,8 @@
 [![Build Status](https://travis-ci.org/jcabi/jcabi-matchers.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-matchers)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 
-More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html)
+More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
+Also, read this blog post: [XML/XPath Matchers for Hamcrest](http://www.yegor256.com/2014/04/28/xml-xpath-hamcrest-matchers.html).
 
 The library contains a collection of convenient Hamcrest matchers. For example:
 
