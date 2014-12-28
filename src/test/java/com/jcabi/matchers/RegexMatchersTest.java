@@ -42,6 +42,18 @@ import org.junit.Test;
 public final class RegexMatchersTest {
 
     /**
+     * RegexMatchers should be able to match a string against a series
+     * of patterns.
+     */
+    @Test
+    public void matchesStringToPatterns() {
+        MatcherAssert.assertThat(
+            "zxc456",
+            RegexMatchers.matchesAnyPattern("[zxc]+\\d{3}", "[abc]+")
+        );
+    }
+
+    /**
      * RegexMatchers should be able to match a string against a given pattern.
      */
     @Test

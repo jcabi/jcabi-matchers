@@ -29,8 +29,11 @@
  */
 package com.jcabi.matchers;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 
 /**
@@ -52,6 +55,22 @@ public final class RegexMatchers {
     }
 
     /**
+     * Checks whether a String matches at lease one of given regular
+     * expressions.
+     * @param patterns Regular expression patterns
+     * @return Matcher suitable for JUnit/Hamcrest matching
+     */
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+    public static Matcher<String> matchesAnyPattern(final String...patterns) {
+        final Collection<Matcher<? super String>> matchers =
+            new ArrayList<Matcher<? super String>>(patterns.length);
+        for (final String pattern : patterns) {
+            matchers.add(new RegexMatchingPatternMatcher(pattern));
+        }
+        return CoreMatchers.anyOf(matchers);
+    }
+
+    /**
      * Checks whether a String matches the given regular expression. Works in a
      * similar manner to {@link String#matches(String)}. For example:
      *
@@ -62,9 +81,6 @@ public final class RegexMatchers {
      *
      * @param pattern The pattern to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
-     * @todo #10 Let's create a convenience method
-     *  matchesAnyPattern(String...patterns) that should pass if a string
-     *  matches any of the given patterns.
      */
     public static Matcher<String> matchesPattern(final String pattern) {
         return new RegexMatchingPatternMatcher(pattern);
