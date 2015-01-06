@@ -82,4 +82,35 @@ public final class RegexMatchersTest {
         );
     }
 
+    /**
+     * RegexMatchers should be able to check if a String contains any of the
+     * given patterns.
+     */
+    @Test
+    public void checksIfStringContainsAnyPattern() {
+        MatcherAssert.assertThat(
+            "awrjbvjkb",
+            Matchers.allOf(
+                RegexMatchers.containsAnyPattern("aa", "bb", "jbv"),
+                Matchers.not(RegexMatchers.containsAnyPattern("cc", "dd"))
+            )
+        );
+    }
+
+    /**
+     * RegexMatchers should be able to check if a String contains all of the
+     * given patterns.
+     *
+     */
+    @Test
+    public void checksIfStringContainsAllPatterns() {
+        MatcherAssert.assertThat(
+            "asjbclkjbxhui",
+            Matchers.allOf(
+                RegexMatchers.containsAllPatterns("asj", "lkj", "jbx"),
+                Matchers.not(RegexMatchers.containsAllPatterns("bcl", "ff"))
+            )
+        );
+    }
+
 }

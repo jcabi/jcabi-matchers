@@ -98,14 +98,52 @@ public final class RegexMatchers {
      *
      * @param pattern The pattern to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
-     * @todo #10 Let's create the following convenience methods:
-     *  1) containsAnyPattern(String...patterns), which should pass if a string
-     *  contains ANY of the given patterns, and
-     *  2) containsAllPatterns(String...patterns). which should pass if a string
-     *  contains ALL of the given patterns.
      */
     public static Matcher<String> containsPattern(final String pattern) {
         return new RegexContainingPatternMatcher(pattern);
+    }
+
+    /**
+     * Checks whether a {@link String} contains a subsequence matching any of
+     * the given regular expressions.
+     * @param patterns The patterns to match against
+     * @return Matcher suitable for JUnit/Hamcrest matching
+     * @see java.util.regex.Matcher#find()
+     * @see #containsPattern(String)
+     */
+    public static Matcher<String> containsAnyPattern(final String... patterns) {
+        return CoreMatchers
+            .anyOf(createContainingMatchers(patterns));
+    }
+
+    /**
+     * Checks whether a {@link String} contains a subsequence matching any of
+     * the given regular expressions.
+     * @param patterns The patterns to match against
+     * @return Matcher suitable for JUnit/Hamcrest matching
+     * @see java.util.regex.Matcher#find()
+     * @see #containsPattern(String)
+     */
+    public static Matcher<String> containsAllPatterns(
+        final String... patterns) {
+        return CoreMatchers
+            .allOf(createContainingMatchers(patterns));
+    }
+
+    /**
+     * Creates a {@link Collection} of {@link Matcher}'s for the given patterns.
+     * @param patterns The given patterns
+     * @return A {@link Collection} of {@link Matcher}'s
+     */
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+    private static Collection<Matcher<? super String>> createContainingMatchers(
+        final String... patterns) {
+        final Collection<Matcher<? super String>> matchers =
+            new ArrayList<Matcher<? super String>>(patterns.length);
+        for (final String pattern : patterns) {
+            matchers.add(new RegexContainingPatternMatcher(pattern));
+        }
+        return matchers;
     }
 
 }
