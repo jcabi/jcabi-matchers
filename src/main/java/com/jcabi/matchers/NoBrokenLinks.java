@@ -162,9 +162,11 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
                 HttpURLConnection.class.cast(url.openConnection());
             try {
                 code = conn.getResponseCode();
-                Logger.debug(NoBrokenLinks.class,
+                Logger.debug(
+                        NoBrokenLinks.class,
                         "#http('%s'): response code is %s",
-                        url, code);
+                        url, code
+                );
             } catch (final IOException ex) {
                 Logger.warn(
                     NoBrokenLinks.class,
