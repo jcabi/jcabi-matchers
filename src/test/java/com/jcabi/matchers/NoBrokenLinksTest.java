@@ -77,7 +77,7 @@ public final class NoBrokenLinksTest {
                 )
             ).fetch(),
             Matchers.not(
-                new NoBrokenLinks(new URI("http://www.jcabi.com"))
+                new NoBrokenLinks(new URI("http://google.com"))
             )
         );
     }
