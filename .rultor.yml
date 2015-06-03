@@ -32,8 +32,7 @@ deploy:
     s3cmd --no-progress put jcabi-matchers.xml --config=../s3cfg s3://pdd.teamed.io/jcabi-matchers.xml
     est --dir=./est --verbose --file=jcabi-matchers.xml --format=xml
     s3cmd --no-progress put jcabi-matchers.xml --config=../s3cfg s3://est.teamed.io/jcabi-matchers.xml
-  commanders:
-  - yegor256
+  commanders: []
 env:
   MAVEN_OPTS: -XX:MaxPermSize=256m -Xmx1g
 release:
