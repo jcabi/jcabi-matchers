@@ -4,7 +4,9 @@
 [![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-matchers)](http://www.rultor.com/p/jcabi/jcabi-matchers)
 
 [![Build Status](https://travis-ci.org/jcabi/jcabi-matchers.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-matchers)
+[![Build status](https://ci.appveyor.com/api/projects/status/1lxligjnsadk2apo/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-matchers/branch/master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
+[![JavaDoc](https://img.shields.io/badge/javadoc-html-blue.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 
 More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
 Also, read this blog post: [XML/XPath Matchers for Hamcrest](http://www.yegor256.com/2014/04/28/xml-xpath-hamcrest-matchers.html).
