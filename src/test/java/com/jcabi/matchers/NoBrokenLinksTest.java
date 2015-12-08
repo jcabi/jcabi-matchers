@@ -93,11 +93,11 @@ public final class NoBrokenLinksTest {
                 StringUtils.join(
                     "<html xmlns='http://www.w3.org/1999/xhtml'>",
                     "<body><a href='/index.html'/>",
-                    "<a href='http://img.rexsl.com/logo.png'/>",
+                    "<a href='http://img.teamed.io/logo.svg'/>",
                     "</body></html>"
                 )
             ).fetch(),
-            new NoBrokenLinks(new URI("http://www.rexsl.com/"))
+            new NoBrokenLinks(new URI("http://www.teamed.io/"))
         );
     }
 
