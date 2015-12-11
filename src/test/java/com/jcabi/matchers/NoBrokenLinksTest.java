@@ -83,7 +83,7 @@ public final class NoBrokenLinksTest {
     }
 
     /**
-     * NoBrokenLinks can pass withou broken links in HTML.
+     * NoBrokenLinks can pass without broken links in HTML.
      * @throws Exception If something goes wrong inside
      */
     @Test
