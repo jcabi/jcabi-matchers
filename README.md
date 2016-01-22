@@ -5,7 +5,7 @@
 
 [![Build Status](https://travis-ci.org/jcabi/jcabi-matchers.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-matchers)
 [![Build status](https://ci.appveyor.com/api/projects/status/1lxligjnsadk2apo/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-matchers/branch/master)
-[![JavaDoc](https://img.shields.io/badge/javadoc-html-blue.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
+[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.jcabi/jcabi-matchers/badge.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 [![Dependencies](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec)
