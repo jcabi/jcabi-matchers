@@ -242,7 +242,7 @@ public final class XhtmlMatchersTest {
      * @throws Exception
      */
     @Test
-    public void printsOnlyWrongXPaths() {
+    public void hasXPathsPrintsOnlyWrongXPaths() {
         try {
             MatcherAssert.assertThat(
                 "<b><file>some.txt</file><file>ghi.txt</file></b>",
