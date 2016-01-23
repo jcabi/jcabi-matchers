@@ -31,16 +31,14 @@ package com.jcabi.matchers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hamcrest.Description;
 import org.hamcrest.DiagnosingMatcher;
 import org.hamcrest.Matcher;
-import org.hamcrest.core.AllOf;
 
 /**
- * Matcher that test if all matchers matches, but print info 
- * about only that ones who failed.
- * 
+ * Matcher that test if all matchers matches, but print info about only that
+ * ones who failed.
+ *
  * Based in {@link AllOf}
  *
  * @author Jose V. Dal Pra Junior (jrdalpra@gmail.com)
@@ -49,31 +47,48 @@ import org.hamcrest.core.AllOf;
  */
 final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
 
-        private final Iterable<Matcher<? super T>> matchers;
-        private final List<Matcher<? super T>> wrong;
-        
-        
-        public AllOfThatPrintsOnlyWrongMatchers(final Iterable<Matcher<? super T>> matchers) {
-            super();
-            this.matchers = matchers;
-            this.wrong = new ArrayList<Matcher<? super T>>();
-        }
+    /**
+     * Default size for list of wrong matchers.
+     */
+    private static final int SIZE = 10;
 
-        public final void describeTo(final Description description) {
-            description.appendList("(", ",", ")", wrong);
-        }
-        
-        @Override
-        public final boolean matches(final Object o, final Description mismatch) {
-            for (Matcher<? super T> matcher : matchers) {
-                if (!matcher.matches(o)) {
-                  mismatch.appendDescriptionOf(matcher).appendText(" ");
-                  matcher.describeMismatch(o, mismatch);
-                  wrong.add(matcher);
-                  return false;
-                }
-            }
-            return true;
-        }
-        
+    /**
+     * Matchers that will be tested.
+     */
+    private final transient Iterable<Matcher<? super T>> matchers;
+
+    /**
+     * Matchers that does not matches.
+     */
+    private final transient List<Matcher<? super T>> wrong;
+    /**
+     * Construct that accept matchers to test.
+     * @param iterable Matchers that will be tested.
+     */
+    public AllOfThatPrintsOnlyWrongMatchers(
+            final Iterable<Matcher<? super T>> iterable) {
+        super();
+        this.matchers = iterable;
+        this.wrong = new ArrayList<Matcher<? super T>>(SIZE);
     }
+
+    @Override
+    public void describeTo(final Description description) {
+        description.appendList("(", ",", ")", this.wrong);
+    }
+
+    @Override
+    public boolean matches(final Object obj, final Description mismatch) {
+        boolean matches = true;
+        for (final Matcher<? super T> matcher : this.matchers) {
+            if (!matcher.matches(obj)) {
+                mismatch.appendDescriptionOf(matcher).appendText(" ");
+                matcher.describeMismatch(obj, mismatch);
+                this.wrong.add(matcher);
+                matches = false;
+            }
+        }
+        return matches;
+    }
+
+}
