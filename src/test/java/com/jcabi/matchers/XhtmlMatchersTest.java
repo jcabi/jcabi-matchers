@@ -245,10 +245,11 @@ public final class XhtmlMatchersTest {
     public void hasXPathsPrintsOnlyWrongXPaths() {
         try {
             MatcherAssert.assertThat(
-                "<b><file>some.txt</file><file>ghi.txt</file></b>",
+                "<b><file>some.txt</file><file>gni.txt</file></b>",
                 XhtmlMatchers.hasXPaths(
                     "/b/file[.='some.txt']",
-                    "/b/file[.='ghx.txt']"
+                    "/b/file[.='gnx.txt']",
+                    "/b/file[.='gni.txt']"
                 )
             );
         } catch (final AssertionError error) {
@@ -257,10 +258,10 @@ public final class XhtmlMatchersTest {
                 Matchers.hasToString(
                     StringUtils.join(
                         "\nExpected: (an XML document ",
-                        "with XPath /b/file[.='ghx.txt'])\n",
+                        "with XPath /b/file[.='gnx.txt'])\n",
                         "     but: an XML document with XPath",
-                        " /b/file[.='ghx.txt'] was \"",
-                        "<b><file>some.txt</file><file>ghi.txt</file></b>\""
+                        " /b/file[.='gnx.txt'] was \"",
+                        "<b><file>some.txt</file><file>gni.txt</file></b>\""
                     )
                 )
             );

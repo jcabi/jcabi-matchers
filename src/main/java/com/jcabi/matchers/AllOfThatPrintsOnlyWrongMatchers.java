@@ -29,6 +29,7 @@
  */
 package com.jcabi.matchers;
 
+import com.jcabi.aspects.Tv;
 import java.util.ArrayList;
 import java.util.List;
 import org.hamcrest.Description;
@@ -48,11 +49,6 @@ import org.hamcrest.Matcher;
 final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
 
     /**
-     * Default size for list of wrong matchers.
-     */
-    private static final int SIZE = 10;
-
-    /**
      * Matchers that will be tested.
      */
     private final transient Iterable<Matcher<? super T>> matchers;
@@ -69,7 +65,7 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
             final Iterable<Matcher<? super T>> iterable) {
         super();
         this.matchers = iterable;
-        this.wrong = new ArrayList<Matcher<? super T>>(SIZE);
+        this.wrong = new ArrayList<Matcher<? super T>>(Tv.THREE);
     }
 
     @Override
