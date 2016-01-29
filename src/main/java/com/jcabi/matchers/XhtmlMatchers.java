@@ -42,7 +42,6 @@ import javax.xml.transform.Source;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.w3c.dom.Node;
 
 /**
@@ -171,7 +170,7 @@ public final class XhtmlMatchers {
         for (final String xpath : xpaths) {
             list.add(XhtmlMatchers.<T>hasXPath(xpath));
         }
-        return Matchers.allOf(list);
+        return new AllOfThatPrintsOnlyWrongMatchers<T>(list);
     }
 
     /**

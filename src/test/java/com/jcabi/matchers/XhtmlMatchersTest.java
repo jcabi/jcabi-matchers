@@ -237,6 +237,37 @@ public final class XhtmlMatchersTest {
         );
     }
 
+    /**
+     * This method should only prints wrong xpaths.
+     * @throws Exception
+     */
+    @Test
+    public void hasXPathsPrintsOnlyWrongXPaths() {
+        try {
+            MatcherAssert.assertThat(
+                "<b><file>some.txt</file><file>gni.txt</file></b>",
+                XhtmlMatchers.hasXPaths(
+                    "/b/file[.='some.txt']",
+                    "/b/file[.='gnx.txt']",
+                    "/b/file[.='gni.txt']"
+                )
+            );
+        } catch (final AssertionError error) {
+            MatcherAssert.assertThat(
+                error.getMessage(),
+                Matchers.hasToString(
+                    StringUtils.join(
+                        "\nExpected: (an XML document ",
+                        "with XPath /b/file[.='gnx.txt'])\n",
+                        "     but: an XML document with XPath",
+                        " /b/file[.='gnx.txt'] was \"",
+                        "<b><file>some.txt</file><file>gni.txt</file></b>\""
+                    )
+                )
+            );
+        }
+    }
+
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
     public static final class Foo {
