@@ -58,7 +58,7 @@ final class RegexContainingPatternMatcher extends TypeSafeMatcher<String> {
      * Public ctor.
      * @param regex The regular expression to match against.
      */
-    public RegexContainingPatternMatcher(final String regex) {
+    RegexContainingPatternMatcher(final String regex) {
         super();
         this.pattern = Pattern.compile(regex);
     }

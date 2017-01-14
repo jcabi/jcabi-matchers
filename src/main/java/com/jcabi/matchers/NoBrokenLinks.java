@@ -63,7 +63,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
     /**
      * List of broken links.
      */
-    private final transient Collection<URI> broken = new LinkedList<URI>();
+    private final transient Collection<URI> broken;
 
     /**
      * Public ctor.
@@ -72,6 +72,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
     public NoBrokenLinks(final URI uri) {
         super();
         this.home = uri;
+        this.broken = new LinkedList<>();
     }
 
     @Override

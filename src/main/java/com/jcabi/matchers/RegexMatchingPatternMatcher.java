@@ -59,7 +59,7 @@ final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
      * Public ctor.
      * @param regex The regular expression to match against.
      */
-    public RegexMatchingPatternMatcher(final String regex) {
+    RegexMatchingPatternMatcher(final String regex) {
         super();
         this.pattern = regex;
     }

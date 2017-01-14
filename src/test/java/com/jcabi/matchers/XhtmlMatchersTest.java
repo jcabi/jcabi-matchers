@@ -30,11 +30,11 @@
 package com.jcabi.matchers;
 
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
@@ -47,6 +47,7 @@ import org.w3c.dom.Element;
  * Test case for {@link XhtmlMatchers}.
  * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
+ * @since 0.1
  */
 @SuppressWarnings("PMD.TooManyMethods")
 public final class XhtmlMatchersTest {
@@ -95,13 +96,19 @@ public final class XhtmlMatchersTest {
     @Test
     public void matchesInputStreamAndReader() throws Exception {
         MatcherAssert.assertThat(
-            IOUtils.toInputStream("<b><file>foo.txt</file></b>"),
+            IOUtils.toInputStream(
+                "<b><file>foo.txt</file></b>",
+                StandardCharsets.UTF_8
+            ),
             XhtmlMatchers.hasXPath("/b/file[.='foo.txt']")
         );
         MatcherAssert.assertThat(
             new InputStreamReader(
-                IOUtils.toInputStream("<xx><y/></xx>", Charsets.UTF_8),
-                Charsets.UTF_8
+                IOUtils.toInputStream(
+                    "<xx><y/></xx>",
+                    StandardCharsets.UTF_8
+                ),
+                StandardCharsets.UTF_8
             ),
             XhtmlMatchers.hasXPath("/xx/y")
         );
@@ -268,6 +275,9 @@ public final class XhtmlMatchersTest {
         }
     }
 
+    /**
+     * Foo.
+     */
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
     public static final class Foo {

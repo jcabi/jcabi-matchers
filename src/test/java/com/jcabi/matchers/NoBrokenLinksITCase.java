@@ -40,6 +40,7 @@ import org.junit.Test;
  * Integration case for {@link NoBrokenLinks}.
  * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
+ * @since 0.1
  */
 public final class NoBrokenLinksITCase {
 

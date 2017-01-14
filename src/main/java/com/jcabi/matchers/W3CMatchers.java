@@ -39,9 +39,11 @@ import org.hamcrest.Matcher;
  *
  * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
+ * @since 0.1
  */
 @ToString
 @EqualsAndHashCode
+@SuppressWarnings("PMD.ProhibitPublicStaticMethods")
 public final class W3CMatchers {
 
     /**

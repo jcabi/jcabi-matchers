@@ -48,8 +48,15 @@ import org.w3c.dom.Node;
  *
  * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
+ * @since 0.1
  */
 @EqualsAndHashCode(callSuper = false, of = "xml")
+@SuppressWarnings(
+    {
+        "PMD.OnlyOneConstructorShouldDoInitialization",
+        "PMD.ConstructorOnlyInitializesOrCallOtherConstructors"
+    }
+)
 final class StringSource extends DOMSource {
 
     /**
@@ -77,13 +84,11 @@ final class StringSource extends DOMSource {
         try {
             final Transformer transformer =
                 TransformerFactory.newInstance().newTransformer();
+            final String yes = "yes";
             transformer.setOutputProperty(
-                // @checkstyle MultipleStringLiteralsCheck (1 line)
-                OutputKeys.OMIT_XML_DECLARATION, "yes"
+                OutputKeys.OMIT_XML_DECLARATION, yes
             );
-            transformer.setOutputProperty(
-                OutputKeys.INDENT, "yes"
-            );
+            transformer.setOutputProperty(OutputKeys.INDENT, yes);
             transformer.transform(
                 new DOMSource(node),
                 new StreamResult(writer)

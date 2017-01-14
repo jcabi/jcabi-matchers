@@ -45,6 +45,7 @@ import org.hamcrest.TypeSafeMatcher;
  *
  * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
+ * @since 0.1
  */
 @Immutable
 @ToString

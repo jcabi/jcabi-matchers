@@ -60,6 +60,7 @@ import org.w3c.dom.Node;
  */
 @ToString
 @EqualsAndHashCode
+@SuppressWarnings("PMD.ProhibitPublicStaticMethods")
 public final class XhtmlMatchers {
 
     /**
@@ -86,12 +87,12 @@ public final class XhtmlMatchers {
      * input type presentable as an XML document, as much as it is possible.
      *
      * @param xhtml The source of data
-     * @return Renderable source
      * @param <T> Type of source
+     * @return Renderable source
      * @since 0.4.10
      */
     public static <T> Source xhtml(final T xhtml) {
-        Source source;
+        final Source source;
         if (xhtml instanceof Source) {
             source = Source.class.cast(xhtml);
         } else if (xhtml instanceof InputStream) {
@@ -117,8 +118,8 @@ public final class XhtmlMatchers {
     /**
      * Matches content against XPath query.
      * @param query The query
-     * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
+     * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static <T> Matcher<T> hasXPath(final String query) {
         return XhtmlMatchers.hasXPath(query, new XPathContext());
@@ -138,8 +139,8 @@ public final class XhtmlMatchers {
      *
      * @param query The query
      * @param namespaces List of namespaces
-     * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
+     * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static <T> Matcher<T> hasXPath(final String query,
         final Object... namespaces) {
@@ -150,8 +151,8 @@ public final class XhtmlMatchers {
      * Matches content against XPath query, with custom context.
      * @param query The query
      * @param ctx The context
-     * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
+     * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static <T> Matcher<T> hasXPath(final String query,
         final NamespaceContext ctx) {
@@ -161,12 +162,12 @@ public final class XhtmlMatchers {
     /**
      * Matches content against list of XPaths.
      * @param xpaths The query
-     * @return Matcher suitable for JUnit/Hamcrest matching
      * @param <T> Type of XML content provided
+     * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static <T> Matcher<T> hasXPaths(final String...xpaths) {
         final Collection<Matcher<? super T>> list =
-            new ArrayList<Matcher<? super T>>(xpaths.length);
+            new ArrayList<>(xpaths.length);
         for (final String xpath : xpaths) {
             list.add(XhtmlMatchers.<T>hasXPath(xpath));
         }

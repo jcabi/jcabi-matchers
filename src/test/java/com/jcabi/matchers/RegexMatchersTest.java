@@ -100,7 +100,6 @@ public final class RegexMatchersTest {
     /**
      * RegexMatchers should be able to check if a String contains all of the
      * given patterns.
-     *
      */
     @Test
     public void checksIfStringContainsAllPatterns() {

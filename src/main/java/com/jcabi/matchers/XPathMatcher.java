@@ -44,6 +44,7 @@ import org.hamcrest.TypeSafeMatcher;
  * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
  * @since 0.3.7
+ * @param <T> Type of param
  */
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "xpath")
