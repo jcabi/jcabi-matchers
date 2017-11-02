@@ -8,6 +8,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/1lxligjnsadk2apo/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-matchers/branch/master)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.jcabi/jcabi-matchers/badge.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 
+[![jpeek report](http://i.jpeek.org/com.jcabi/jcabi-matchers/badge.svg)](http://i.jpeek.org/com.jcabi/jcabi-matchers/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 [![Dependencies](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec)
 
