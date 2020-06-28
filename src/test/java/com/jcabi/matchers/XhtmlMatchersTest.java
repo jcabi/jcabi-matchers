@@ -275,6 +275,8 @@ public final class XhtmlMatchersTest {
 
     /**
      * Foo.
+     *
+     * @since 0.1
      */
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
