@@ -34,7 +34,8 @@ import java.net.URI;
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link NoBrokenLinks}.
@@ -106,11 +107,15 @@ public final class NoBrokenLinksTest {
      * NoBrokenLinks can throw for a broken HTML.
      * @throws Exception If something goes wrong inside
      */
-    @Test(expected = IllegalArgumentException.class)
-    public void throwsWhenHtmlIsBroken() throws Exception {
-        MatcherAssert.assertThat(
-            new FakeRequest().withBody("not HTML at all").fetch(),
-            new NoBrokenLinks(new URI("#"))
+    @Test
+    public void throwsWhenHtmlIsBroken() {
+        Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () ->
+                MatcherAssert.assertThat(
+                    new FakeRequest().withBody("not HTML at all").fetch(),
+                    new NoBrokenLinks(new URI("#"))
+                )
         );
     }
 
