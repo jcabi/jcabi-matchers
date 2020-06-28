@@ -50,7 +50,7 @@ public final class W3CMatchersTest {
         MatcherAssert.assertThat(
             StringUtils.join(
                 "<!DOCTYPE html>",
-                "<html><head><meta charset='UTF-8'/>",
+                "<html lang='en'><head><meta charset='UTF-8'/>",
                 "<title>hey</title></head>",
                 "<body></body></html>"
             ),
