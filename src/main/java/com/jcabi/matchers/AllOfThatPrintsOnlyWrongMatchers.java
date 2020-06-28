@@ -42,7 +42,6 @@ import org.hamcrest.Matcher;
  *
  * Based in {@link AllOf}
  *
- * @author Jose V. Dal Pra Junior (jrdalpra@gmail.com)
  * @version $Id$
  * @param <T> Type of argument
  * @since 0.2.6

@@ -54,7 +54,6 @@ import org.w3c.dom.Node;
  *   XhtmlMatchers.hasXPath("/root/a[.='hello']")
  * );</pre>
  *
- * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
  * @since 0.2.6
  */

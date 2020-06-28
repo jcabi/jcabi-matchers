@@ -39,7 +39,6 @@ import org.hamcrest.Matcher;
 /**
  * Convenient matchers for checking Strings against regular expressions.
  *
- * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
  * @since 1.3
  */

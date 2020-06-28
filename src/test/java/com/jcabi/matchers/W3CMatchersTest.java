@@ -37,7 +37,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link W3CMatchers}.
- * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
  * @since 0.1
  */

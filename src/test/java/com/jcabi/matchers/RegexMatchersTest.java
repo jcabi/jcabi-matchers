@@ -35,7 +35,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link RegexMatchers}.
- * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
  * @since 1.3
  */

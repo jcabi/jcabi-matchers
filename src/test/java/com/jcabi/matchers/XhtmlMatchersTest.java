@@ -45,7 +45,6 @@ import org.w3c.dom.Element;
 
 /**
  * Test case for {@link XhtmlMatchers}.
- * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
  * @since 0.1
  */

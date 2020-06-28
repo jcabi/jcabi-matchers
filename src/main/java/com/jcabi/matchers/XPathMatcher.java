@@ -41,7 +41,6 @@ import org.hamcrest.TypeSafeMatcher;
  *
  * <p>Objects of this class are immutable and thread-safe.
  *
- * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
  * @since 0.3.7
  * @param <T> Type of param

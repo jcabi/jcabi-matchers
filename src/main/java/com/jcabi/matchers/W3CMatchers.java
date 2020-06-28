@@ -37,7 +37,6 @@ import org.hamcrest.Matcher;
 /**
  * Matchers for validating HTML and CSS content.
  *
- * @author Carlos Miranda (miranda.cma@gmail.com)
  * @version $Id$
  * @since 0.1
  */

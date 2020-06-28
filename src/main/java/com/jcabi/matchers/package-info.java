@@ -39,7 +39,6 @@
  *   &lt;artifactId&gt;jcabi-matchers&lt;/artifactId&gt;
  * &lt;/dependency&gt;</pre>
  *
- * @author Yegor Bugayenko (yegor@tpc2.com)
  * @version $Id$
  * @since 1.0
  * @see <a href="http://matchers.jcabi.com/">project website</a>
