@@ -37,7 +37,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link W3CMatchers}.
- * @version $Id$
  * @since 0.1
  */
 public final class W3CMatchersTest {

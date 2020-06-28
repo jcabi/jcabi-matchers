@@ -47,7 +47,6 @@ import org.hamcrest.Description;
 /**
  * Finds broken links in HTML.
  *
- * @version $Id$
  * @since 0.3.4
  */
 @ToString

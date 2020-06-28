@@ -35,7 +35,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link RegexMatchers}.
- * @version $Id$
  * @since 1.3
  */
 public final class RegexMatchersTest {

@@ -37,7 +37,6 @@ import org.hamcrest.Matcher;
 /**
  * Matchers for validating HTML and CSS content.
  *
- * @version $Id$
  * @since 0.1
  */
 @ToString

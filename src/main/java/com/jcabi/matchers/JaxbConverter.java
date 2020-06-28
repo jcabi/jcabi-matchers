@@ -78,7 +78,6 @@ import lombok.ToString;
  *   }
  * }</pre>
  *
- * @version $Id$
  * @since 0.1
  */
 @ToString

@@ -45,7 +45,6 @@ import org.w3c.dom.Element;
 
 /**
  * Test case for {@link XhtmlMatchers}.
- * @version $Id$
  * @since 0.1
  */
 @SuppressWarnings("PMD.TooManyMethods")

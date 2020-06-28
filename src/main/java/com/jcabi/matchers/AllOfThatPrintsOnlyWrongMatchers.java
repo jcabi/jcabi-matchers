@@ -42,7 +42,6 @@ import org.hamcrest.Matcher;
  *
  * Based in {@link AllOf}
  *
- * @version $Id$
  * @param <T> Type of argument
  * @since 0.2.6
  */

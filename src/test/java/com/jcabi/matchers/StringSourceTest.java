@@ -40,7 +40,6 @@ import org.w3c.dom.Node;
 
 /**
  * Test case for {@link StringSource}.
- * @version $Id$
  * @since 0.1
  */
 public final class StringSourceTest {

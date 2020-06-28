@@ -31,7 +31,6 @@
 /**
  * Hamcrest matchers.
  *
- * @version $Id$
  * @since 1.0
  */
 package com.jcabi.matchers;

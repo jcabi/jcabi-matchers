@@ -39,7 +39,6 @@ import org.hamcrest.Matcher;
 /**
  * Convenient matchers for checking Strings against regular expressions.
  *
- * @version $Id$
  * @since 1.3
  */
 @ToString

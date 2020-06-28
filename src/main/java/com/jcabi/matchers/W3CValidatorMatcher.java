@@ -43,7 +43,6 @@ import org.hamcrest.TypeSafeMatcher;
  *
  * <p>Objects of this class are immutable and thread-safe.
  *
- * @version $Id$
  * @since 0.1
  */
 @Immutable

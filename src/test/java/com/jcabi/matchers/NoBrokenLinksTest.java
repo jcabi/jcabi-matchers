@@ -39,7 +39,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link NoBrokenLinks}.
- * @version $Id$
  * @since 0.1
  */
 public final class NoBrokenLinksTest {

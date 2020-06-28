@@ -38,7 +38,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Integration case for {@link NoBrokenLinks}.
- * @version $Id$
  * @since 0.1
  */
 public final class NoBrokenLinksITCase {
