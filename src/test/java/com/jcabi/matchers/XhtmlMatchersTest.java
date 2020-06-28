@@ -190,11 +190,11 @@ public final class XhtmlMatchersTest {
         final String text =
             // @checkstyle StringLiteralsConcatenation (6 lines)
             "<?xml version='1.0'?>"
-            + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
-            + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
-            + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
-            + "<body><p>\u0443\u0440\u0430!</p></body>"
-            + "</html>";
+                + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
+                + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
+                + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
+                + "<body><p>\u0443\u0440\u0430!</p></body>"
+                + "</html>";
         MatcherAssert.assertThat(
             text,
             Matchers.allOf(
@@ -283,10 +283,12 @@ public final class XhtmlMatchersTest {
          * XML namespace.
          */
         public static final String NAMESPACE = "foo-namespace";
+
         @Override
         public String toString() {
             return "<a><c/></a>";
         }
+
         /**
          * Property abc.
          * @return Value of abc

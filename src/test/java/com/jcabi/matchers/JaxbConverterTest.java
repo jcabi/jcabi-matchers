@@ -127,6 +127,7 @@ public final class JaxbConverterTest {
          * Injected object.
          */
         private transient Object injected = "some text";
+
         /**
          * Inject an object.
          * @param obj The object to inject
@@ -134,6 +135,7 @@ public final class JaxbConverterTest {
         public void inject(final Object obj) {
             this.injected = obj;
         }
+
         /**
          * Injected object. This method is not used directly, but is used
          * during JAXB converting of this object into XML, at
@@ -144,6 +146,7 @@ public final class JaxbConverterTest {
         public Object getInjected() {
             return this.injected;
         }
+
         /**
          * Returns a simple string. This method is not called directly, but
          * is used in {@code convertsJaxbObjectToXml()} for JAXB converting
@@ -166,6 +169,7 @@ public final class JaxbConverterTest {
          * XML namespace.
          */
         public static final String NAMESPACE = "foo-namespace";
+
         /**
          * Simple name.
          * @return The name
