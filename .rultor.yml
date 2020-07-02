@@ -2,8 +2,8 @@ architect:
 - yegor256
 - dmarkov
 install:
-- sudo gem install --no-ri --no-rdoc pdd
-- sudo gem install --no-ri --no-rdoc est
+- sudo gem install pdd -v 0.20.5
+- sudo gem install est -v 0.3.4
 assets:
   secring.gpg: yegor256/home#assets/secring.gpg
   settings.xml: yegor256/home#assets/jcabi/settings.xml
