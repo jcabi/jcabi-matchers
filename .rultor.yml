@@ -2,6 +2,7 @@ architect:
 - yegor256
 - dmarkov
 install:
+- sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
 - sudo gem install pdd -v 0.20.5
 - sudo gem install est -v 0.3.4
 assets:
