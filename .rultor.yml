@@ -1,46 +1,23 @@
-architect:
-- yegor256
-- dmarkov
-install:
-- sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
-- sudo gem install pdd -v 0.20.5
-- sudo gem install est -v 0.3.4
 assets:
   secring.gpg: yegor256/home#assets/secring.gpg
-  settings.xml: yegor256/home#assets/jcabi/settings.xml
   pubring.gpg: yegor256/home#assets/pubring.gpg
-  s3cfg: yegor256/home#assets/s3cfg
+  settings.xml: yegor256/home#assets/jcabi/settings.xml
+env:
+  MAVEN_OPTS: -XX:MaxPermSize=256m -Xmx1g
+install: |
+  sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+  sudo gem install pdd -v 0.20.5
+  sudo gem install est -v 0.3.4
+  pdd --file=/dev/null
 merge:
   script: |
     mvn clean install -Pqulice --errors --settings ../settings.xml
-    mvn clean
-    pdd --source=$(pwd) --verbose --file=/dev/null
-    est --dir=est --file=/dev/null
-  commanders:
-  - carlosmiranda
-  - darkled
-  - dmzaytsev
-  - ggajos
-  - hdouss
-  - krzyk
-  - longtimeago
-  - mkordas
-  - pinaf
 deploy:
   script: |
     mvn clean deploy -Pqulice --errors --settings ../settings.xml
-    mvn clean
-    pdd --source=$(pwd) --verbose --file=jcabi-matchers.xml
-    s3cmd --no-progress put jcabi-matchers.xml --config=../s3cfg s3://pdd.teamed.io/jcabi-matchers.xml
-    est --dir=./est --verbose --file=jcabi-matchers.xml --format=xml
-    s3cmd --no-progress put jcabi-matchers.xml --config=../s3cfg s3://est.teamed.io/jcabi-matchers.xml
-env:
-  MAVEN_OPTS: -XX:MaxPermSize=256m -Xmx1g
 release:
-  script:
-  - mvn versions:set "-DnewVersion=${tag}"
-  - git commit -am "${tag}"
-  - mvn clean deploy -Pqulice -Psonatype -Pjcabi --errors --settings ../settings.xml
-  - mvn clean site-deploy -Psite --errors --settings ../settings.xml
-  commanders:
-  - yegor256
+  script: |
+    mvn versions:set "-DnewVersion=${tag}"
+    git commit -am "${tag}"
+    mvn clean deploy -Pqulice -Psonatype -Pjcabi --errors --settings ../settings.xml
+    mvn clean site-deploy -Psite --errors --settings ../settings.xml
