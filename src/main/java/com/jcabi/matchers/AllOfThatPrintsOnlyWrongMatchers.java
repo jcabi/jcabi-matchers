@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -42,8 +42,6 @@ import org.hamcrest.Matcher;
  *
  * Based in {@link AllOf}
  *
- * @author Jose V. Dal Pra Junior (jrdalpra@gmail.com)
- * @version $Id$
  * @param <T> Type of argument
  * @since 0.2.6
  */
@@ -58,12 +56,14 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
      * Matchers that does not matches.
      */
     private final transient List<Matcher<? super T>> wrong;
+
     /**
      * Construct that accept matchers to test.
      * @param iterable Matchers that will be tested.
      */
     AllOfThatPrintsOnlyWrongMatchers(
-        final Iterable<Matcher<? super T>> iterable) {
+        final Iterable<Matcher<? super T>> iterable
+    ) {
         super();
         this.matchers = iterable;
         this.wrong = new ArrayList<Matcher<? super T>>(Tv.THREE);

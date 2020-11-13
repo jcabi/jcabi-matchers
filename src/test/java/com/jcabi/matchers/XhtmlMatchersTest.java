@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -39,14 +39,12 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
  * Test case for {@link XhtmlMatchers}.
- * @author Yegor Bugayenko (yegor@tpc2.com)
- * @version $Id$
  * @since 0.1
  */
 @SuppressWarnings("PMD.TooManyMethods")
@@ -192,11 +190,11 @@ public final class XhtmlMatchersTest {
         final String text =
             // @checkstyle StringLiteralsConcatenation (6 lines)
             "<?xml version='1.0'?>"
-            + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
-            + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
-            + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
-            + "<body><p>\u0443\u0440\u0430!</p></body>"
-            + "</html>";
+                + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
+                + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
+                + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
+                + "<body><p>\u0443\u0440\u0430!</p></body>"
+                + "</html>";
         MatcherAssert.assertThat(
             text,
             Matchers.allOf(
@@ -277,6 +275,8 @@ public final class XhtmlMatchersTest {
 
     /**
      * Foo.
+     *
+     * @since 0.1
      */
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
@@ -285,10 +285,12 @@ public final class XhtmlMatchersTest {
          * XML namespace.
          */
         public static final String NAMESPACE = "foo-namespace";
+
         @Override
         public String toString() {
             return "<a><c/></a>";
         }
+
         /**
          * Property abc.
          * @return Value of abc

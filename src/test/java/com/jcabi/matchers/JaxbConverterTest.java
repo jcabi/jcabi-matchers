@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -36,12 +36,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link JaxbConverter}.
- * @author Yegor Bugayenko (yegor@tpc2.com)
- * @version $Id$
  * @since 0.1
  */
 public final class JaxbConverterTest {
@@ -121,6 +119,8 @@ public final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
+     * @since 0.1
      */
     @XmlRootElement(name = "employee")
     @XmlAccessorType(XmlAccessType.NONE)
@@ -129,6 +129,7 @@ public final class JaxbConverterTest {
          * Injected object.
          */
         private transient Object injected = "some text";
+
         /**
          * Inject an object.
          * @param obj The object to inject
@@ -136,6 +137,7 @@ public final class JaxbConverterTest {
         public void inject(final Object obj) {
             this.injected = obj;
         }
+
         /**
          * Injected object. This method is not used directly, but is used
          * during JAXB converting of this object into XML, at
@@ -146,6 +148,7 @@ public final class JaxbConverterTest {
         public Object getInjected() {
             return this.injected;
         }
+
         /**
          * Returns a simple string. This method is not called directly, but
          * is used in {@code convertsJaxbObjectToXml()} for JAXB converting
@@ -160,6 +163,8 @@ public final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
+     * @since 0.1
      */
     @XmlType(name = "foo", namespace = JaxbConverterTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
@@ -168,6 +173,7 @@ public final class JaxbConverterTest {
          * XML namespace.
          */
         public static final String NAMESPACE = "foo-namespace";
+
         /**
          * Simple name.
          * @return The name
@@ -180,6 +186,8 @@ public final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
+     * @since 0.1
      */
     @XmlType(name = "bar")
     @XmlAccessorType(XmlAccessType.NONE)

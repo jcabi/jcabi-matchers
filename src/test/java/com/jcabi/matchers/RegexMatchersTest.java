@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -31,12 +31,10 @@ package com.jcabi.matchers;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link RegexMatchers}.
- * @author Carlos Miranda (miranda.cma@gmail.com)
- * @version $Id$
  * @since 1.3
  */
 public final class RegexMatchersTest {

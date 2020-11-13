@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -37,8 +37,6 @@ import org.hamcrest.Matcher;
 /**
  * Matchers for validating HTML and CSS content.
  *
- * @author Carlos Miranda (miranda.cma@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @ToString

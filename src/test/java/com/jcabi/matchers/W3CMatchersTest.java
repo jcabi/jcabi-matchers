@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -33,12 +33,10 @@ import com.jcabi.aspects.RetryOnFailure;
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link W3CMatchers}.
- * @author Carlos Miranda (miranda.cma@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 public final class W3CMatchersTest {

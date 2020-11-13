@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2011-2017, jcabi.com
  * All rights reserved.
  *
@@ -47,8 +47,6 @@ import org.hamcrest.Description;
 /**
  * Finds broken links in HTML.
  *
- * @author Yegor Bugayenko (yegor@tpc2.com)
- * @version $Id$
  * @since 0.3.4
  */
 @ToString
