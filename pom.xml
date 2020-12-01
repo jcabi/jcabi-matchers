@@ -84,7 +84,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     <dependency>
       <groupId>com.jcabi</groupId>
       <artifactId>jcabi-http</artifactId>
-      <version>1.16</version>
+      <version>1.17.3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
