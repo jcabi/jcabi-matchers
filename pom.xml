@@ -134,7 +134,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
       <artifactId>jaxb-runtime</artifactId>
-      <version>2.2.11</version>
+      <version>3.0.0</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
