@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, jcabi.com
+ * Copyright (c) 2011-2022, jcabi.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,9 +78,9 @@ public final class StringSourceTest {
             Matchers.equalTo(
                 StringUtils.join(
                     "<nodeName><?some instruction?>",
-                    "<!--comment-->",
+                    "<!--comment-->\n   ",
                     "<a>withText</a>\n   <a/>\n   <a withArg=\"value\"/>\n",
-                    "</nodeName>"
+                    "</nodeName>\n"
                 )
             )
         );
