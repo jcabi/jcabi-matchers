@@ -8,7 +8,7 @@
 [![PDD status](http://www.0pdd.com/svg?name=jcabi/jcabi-matchers)](http://www.0pdd.com/p?name=jcabi/jcabi-matchers)
 [![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-matchers.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
-[![Dependencies](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561aa37ea193340f32000fec)
+[![codecov](https://codecov.io/gh/jcabi/jcabi-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-matchers)
 
 More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
 Also, read this blog post: [XML/XPath Matchers for Hamcrest](http://www.yegor256.com/2014/04/28/xml-xpath-hamcrest-matchers.html).
