@@ -46,7 +46,7 @@ import org.hamcrest.TypeSafeMatcher;
  */
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "xpath")
-final class XPathMatcher<T> extends TypeSafeMatcher<T> {
+public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
 
     /**
      * The XPath to use.
@@ -63,7 +63,7 @@ final class XPathMatcher<T> extends TypeSafeMatcher<T> {
      * @param query The query
      * @param ctx The context
      */
-    XPathMatcher(final String query, final NamespaceContext ctx) {
+    public XPathMatcher(final String query, final NamespaceContext ctx) {
         super();
         this.xpath = query;
         this.context = ctx;
