@@ -21,9 +21,31 @@ import org.hamcrest.MatcherAssert;
 
 MatcherAssert.assertThat(
   "<test><name>Jeff</name></test>",
-  XhtmlMatchers.hasXPath("/test/name[.='Jeff']");
+  XhtmlMatchers.hasXPath("/test/name[.='Jeff']")
 );
 ```
+
+To match XHTML documents you need to specify namespaces in your XPath expressions:
+
+```java
+MatcherAssert.assertThat(
+  "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><body>Hello, world!</body></html>",
+  XhtmlMatchers.hasXPath("/xhtml:html/xhtml:body[.='Hello, world!']")
+);
+```
+
+Here, we use `xhtml` predefined namespace. There are also `xsl`, `xs`, `xsi`, and `svg` namespaces
+provided off-the-shelf. However, you can define your own too, for example:
+
+
+```java
+MatcherAssert.assertThat(
+  "<foo xmlns='my-own-namespace'><bar/></foo>",
+  XhtmlMatchers.hasXPath("/ns1:foo/ns1:bar", "my-own-namespace")
+);
+```
+
+Here, `my-own-namespace` is called `ns1` inside the XPath expression.
 
 ## How to contribute?
 
