@@ -208,14 +208,8 @@ final class XhtmlMatchersTest {
         } catch (final AssertionError error) {
             MatcherAssert.assertThat(
                 error.getMessage(),
-                Matchers.hasToString(
-                    StringUtils.join(
-                        "\nExpected: (an XML document ",
-                        "with XPath /b/file[.='gnx.txt'])\n",
-                        "     but: an XML document with XPath",
-                        " /b/file[.='gnx.txt'] was \"",
-                        "<b><file>some.txt</file><file>gni.txt</file></b>\""
-                    )
+                Matchers.containsString(
+                    "Expected: (an XML document with XPath /b/file[.='gnx.txt'])"
                 )
             );
         }
