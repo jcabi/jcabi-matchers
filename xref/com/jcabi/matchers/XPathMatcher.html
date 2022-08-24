@@ -54,7 +54,7 @@
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  @ToString
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  @EqualsAndHashCode(callSuper = false, of = <span class="jxr_string">"xpath"</span>)
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> XPathMatcher&lt;T&gt; <strong class="jxr_keyword">extends</strong> TypeSafeMatcher&lt;T&gt; {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> XPathMatcher&lt;T&gt; <strong class="jxr_keyword">extends</strong> TypeSafeMatcher&lt;T&gt; {
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * The XPath to use.</em>
@@ -71,7 +71,7 @@
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     * @param query The query</em>
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     * @param ctx The context</em>
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <a href="../../../com/jcabi/matchers/XPathMatcher.html">XPathMatcher</a>(<strong class="jxr_keyword">final</strong> String query, <strong class="jxr_keyword">final</strong> NamespaceContext ctx) {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">public</strong> <a href="../../../com/jcabi/matchers/XPathMatcher.html">XPathMatcher</a>(<strong class="jxr_keyword">final</strong> String query, <strong class="jxr_keyword">final</strong> NamespaceContext ctx) {
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">super</strong>();
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">this</strong>.xpath = query;
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>          <strong class="jxr_keyword">this</strong>.context = ctx;
