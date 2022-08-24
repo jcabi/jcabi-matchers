@@ -42,14 +42,10 @@ import org.w3c.dom.Node;
  * Test case for {@link StringSource}.
  * @since 0.1
  */
-public final class StringSourceTest {
+final class StringSourceTest {
 
-    /**
-     * StringSource can format XML text properly.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void formatsIncomingXmlDocument() throws Exception {
+    void formatsIncomingXmlDocument() throws Exception {
         final String xml = "<a><b>\u0443\u0440\u0430!</b></a>";
         MatcherAssert.assertThat(
             new StringSource(xml).toString(),
@@ -57,12 +53,8 @@ public final class StringSourceTest {
         );
     }
 
-    /**
-     * StringSource can convert node to string.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void formatIncomingNode() throws Exception {
+    void formatIncomingNode() throws Exception {
         final DocumentBuilder builder = DocumentBuilderFactory
             .newInstance()
             .newDocumentBuilder();

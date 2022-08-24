@@ -48,38 +48,26 @@ import org.w3c.dom.Element;
  * @since 0.1
  */
 @SuppressWarnings("PMD.TooManyMethods")
-public final class XhtmlMatchersTest {
+final class XhtmlMatchersTest {
 
-    /**
-     * XhtmlMatchers can match with custom namespace.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void matchesWithCustomNamespace() throws Exception {
+    void matchesWithCustomNamespace() throws Exception {
         MatcherAssert.assertThat(
             "<a xmlns='foo'><file>abc.txt</file></a>",
             XhtmlMatchers.hasXPath("/ns1:a/ns1:file[.='abc.txt']", "foo")
         );
     }
 
-    /**
-     * XhtmlMatchers can report incorrect match.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void doesntMatch() throws Exception {
+    void doesntMatch() throws Exception {
         MatcherAssert.assertThat(
             "<a/>",
             Matchers.not(XhtmlMatchers.hasXPath("/foo"))
         );
     }
 
-    /**
-     * XhtmlMatchers can match against string.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void matchesPlainString() throws Exception {
+    void matchesPlainString() throws Exception {
         MatcherAssert.assertThat(
             "<b xmlns='bar'><file>abc.txt</file></b>",
             XhtmlMatchers.hasXPath("/ns1:b/ns1:file[.='abc.txt']", "bar")
@@ -87,12 +75,8 @@ public final class XhtmlMatchersTest {
         MatcherAssert.assertThat("<a><b/></a>", XhtmlMatchers.hasXPath("//b"));
     }
 
-    /**
-     * XhtmlMatchers can match an InputStream.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void matchesInputStreamAndReader() throws Exception {
+    void matchesInputStreamAndReader() throws Exception {
         MatcherAssert.assertThat(
             IOUtils.toInputStream(
                 "<b><file>foo.txt</file></b>",
@@ -112,24 +96,16 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can match after JaxbConverter.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void matchesAfterJaxbConverter() throws Exception {
+    void matchesAfterJaxbConverter() throws Exception {
         MatcherAssert.assertThat(
             JaxbConverter.the(new Foo()),
             XhtmlMatchers.hasXPath("/ns1:foo", Foo.NAMESPACE)
         );
     }
 
-    /**
-     * XhtmlMatchers can match against generic type.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void matchesWithGenericType() throws Exception {
+    void matchesWithGenericType() throws Exception {
         final Foo foo = new Foo();
         MatcherAssert.assertThat(
             foo,
@@ -140,12 +116,8 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can convert text to XML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsTextToXml() throws Exception {
+    void convertsTextToXml() throws Exception {
         MatcherAssert.assertThat(
             StringUtils.join(
                 "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
@@ -155,24 +127,16 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can convert text to XML, with Unicode inside.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsTextToXmlWithUnicode() throws Exception {
+    void convertsTextToXmlWithUnicode() throws Exception {
         MatcherAssert.assertThat(
             "<a>\u8514  &#8250;</a>",
             XhtmlMatchers.hasXPath("/a")
         );
     }
 
-    /**
-     * XhtmlMatchers can handle processing instructions.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void preservesProcessingInstructions() throws Exception {
+    void preservesProcessingInstructions() throws Exception {
         MatcherAssert.assertThat(
             "<?xml version='1.0'?><?pi name='foo'?><a/>",
             XhtmlMatchers.hasXPath(
@@ -181,12 +145,8 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can handle DOCTYPE, which potentially may cause troubles.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void processesDocumentsWithDoctype() throws Exception {
+    void processesDocumentsWithDoctype() throws Exception {
         final String text =
             // @checkstyle StringLiteralsConcatenation (6 lines)
             "<?xml version='1.0'?>"
@@ -208,12 +168,8 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can convert W3C Node to XML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsNodeToXml() throws Exception {
+    void convertsNodeToXml() throws Exception {
         final Document doc = DocumentBuilderFactory
             .newInstance()
             .newDocumentBuilder()
@@ -227,12 +183,8 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * XhtmlMatchers can match group of XPaths.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void hasXPaths() throws Exception {
+    void hasXPaths() throws Exception {
         MatcherAssert.assertThat(
             "<b><file>def.txt</file><file>ghi.txt</file></b>",
             XhtmlMatchers.hasXPaths(
@@ -242,12 +194,8 @@ public final class XhtmlMatchersTest {
         );
     }
 
-    /**
-     * This method should only prints wrong xpaths.
-     * @throws Exception
-     */
     @Test
-    public void hasXPathsPrintsOnlyWrongXPaths() {
+    void hasXPathsPrintsOnlyWrongXPaths() {
         try {
             MatcherAssert.assertThat(
                 "<b><file>some.txt</file><file>gni.txt</file></b>",

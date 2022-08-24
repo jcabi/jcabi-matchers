@@ -168,14 +168,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     </dependency>
   </dependencies>
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
@@ -198,7 +190,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
           <plugin>
             <groupId>com.qulice</groupId>
             <artifactId>qulice-maven-plugin</artifactId>
-            <version>0.19.4</version>
+            <version>0.22.0</version>
             <configuration>
               <excludes>
                 <exclude>duplicatefinder:.*</exclude>

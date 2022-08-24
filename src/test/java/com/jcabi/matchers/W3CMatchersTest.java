@@ -40,14 +40,11 @@ import org.junit.jupiter.api.Test;
  * Test case for {@link W3CMatchers}.
  * @since 0.1
  */
-public final class W3CMatchersTest {
+final class W3CMatchersTest {
 
-    /**
-     * W3CMatchers can check HTML document validity.
-     */
     @Test
     @RetryOnFailure(verbose = false)
-    public void matchesValidHtml() {
+    void matchesValidHtml() {
         MatcherAssert.assertThat(
             StringUtils.join(
                 "<!DOCTYPE html>",
@@ -59,37 +56,28 @@ public final class W3CMatchersTest {
         );
     }
 
-    /**
-     * W3CMatchers can reject invalid HTML document.
-     */
     @Test
     @RetryOnFailure(verbose = false)
-    public void rejectsInvalidHtml() {
+    void rejectsInvalidHtml() {
         MatcherAssert.assertThat(
             "<blah><blaaaaaaaaa/>",
             Matchers.not(W3CMatchers.validHtml())
         );
     }
 
-    /**
-     * W3CMatchers can check CSS document validity.
-     */
     @Test
     @RetryOnFailure(verbose = false)
-    public void matchesValidCss() {
+    void matchesValidCss() {
         MatcherAssert.assertThat(
             "body { background-color:#d0e4fe; }",
             W3CMatchers.validCss()
         );
     }
 
-    /**
-     * W3CMatchers can reject invalid CSS document.
-     */
     @Test
     @Disabled("I have no idea why it doesn't work")
     @RetryOnFailure(verbose = false)
-    public void rejectsInvalidCss() {
+    void rejectsInvalidCss() {
         MatcherAssert.assertThat(
             "div { -- $#^@*&^$&@; }",
             Matchers.not(W3CMatchers.validCss())

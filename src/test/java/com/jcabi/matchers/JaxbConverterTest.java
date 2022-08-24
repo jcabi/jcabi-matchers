@@ -42,14 +42,10 @@ import org.junit.jupiter.api.Test;
  * Test case for {@link JaxbConverter}.
  * @since 0.1
  */
-public final class JaxbConverterTest {
+final class JaxbConverterTest {
 
-    /**
-     * JaxbConverter can convert a JAXB-annotated object to XML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsJaxbObjectToXml() throws Exception {
+    void convertsJaxbObjectToXml() throws Exception {
         final Object object = new JaxbConverterTest.Employee();
         MatcherAssert.assertThat(
             JaxbConverter.the(object),
@@ -57,12 +53,8 @@ public final class JaxbConverterTest {
         );
     }
 
-    /**
-     * JaxbConverter can convert an object to XML, renderable as a string.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsObjectToSourceRenderableAsText() throws Exception {
+    void convertsObjectToSourceRenderableAsText() throws Exception {
         final Object object = new JaxbConverterTest.Employee();
         MatcherAssert.assertThat(
             JaxbConverter.the(object).toString(),
@@ -70,13 +62,8 @@ public final class JaxbConverterTest {
         );
     }
 
-    /**
-     * JaxbConverter can convert an object with other objects injected
-     * in runtime.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsAnObjectThatHasOthersInjected() throws Exception {
+    void convertsAnObjectThatHasOthersInjected() throws Exception {
         final JaxbConverterTest.Employee employee =
             new JaxbConverterTest.Employee();
         employee.inject(new JaxbConverterTest.Foo());
@@ -89,12 +76,8 @@ public final class JaxbConverterTest {
         );
     }
 
-    /**
-     * JaxbConverter can convert an object without XmlRootElement annotation.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsNonRootObject() throws Exception {
+    void convertsNonRootObject() throws Exception {
         final Object object = new JaxbConverterTest.Bar();
         MatcherAssert.assertThat(
             JaxbConverter.the(object),
@@ -102,12 +85,8 @@ public final class JaxbConverterTest {
         );
     }
 
-    /**
-     * JaxbConverter can convert an object without XmlRootElement annotation.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void convertsNonRootObjectWithNamespace() throws Exception {
+    void convertsNonRootObjectWithNamespace() throws Exception {
         final Object object = new JaxbConverterTest.Foo();
         MatcherAssert.assertThat(
             JaxbConverter.the(object),

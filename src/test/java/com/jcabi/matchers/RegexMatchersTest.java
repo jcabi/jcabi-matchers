@@ -37,25 +37,18 @@ import org.junit.jupiter.api.Test;
  * Test case for {@link RegexMatchers}.
  * @since 1.3
  */
-public final class RegexMatchersTest {
+final class RegexMatchersTest {
 
-    /**
-     * RegexMatchers should be able to match a string against a series
-     * of patterns.
-     */
     @Test
-    public void matchesStringToPatterns() {
+    void matchesStringToPatterns() {
         MatcherAssert.assertThat(
             "zxc456",
             RegexMatchers.matchesAnyPattern("[zxc]+\\d{3}", "[abc]+")
         );
     }
 
-    /**
-     * RegexMatchers should be able to match a string against a given pattern.
-     */
     @Test
-    public void matchesStringToPattern() {
+    void matchesStringToPattern() {
         MatcherAssert.assertThat(
             "abc123",
             Matchers.allOf(
@@ -65,12 +58,8 @@ public final class RegexMatchersTest {
         );
     }
 
-    /**
-     * RegexMatchers should be able to check if a String contains a given
-     * pattern.
-     */
     @Test
-    public void checksIfStringContainsPattern() {
+    void checksIfStringContainsPattern() {
         MatcherAssert.assertThat(
             "aardvark",
             Matchers.allOf(
@@ -80,12 +69,8 @@ public final class RegexMatchersTest {
         );
     }
 
-    /**
-     * RegexMatchers should be able to check if a String contains any of the
-     * given patterns.
-     */
     @Test
-    public void checksIfStringContainsAnyPattern() {
+    void checksIfStringContainsAnyPattern() {
         MatcherAssert.assertThat(
             "awrjbvjkb",
             Matchers.allOf(
@@ -95,12 +80,8 @@ public final class RegexMatchersTest {
         );
     }
 
-    /**
-     * RegexMatchers should be able to check if a String contains all of the
-     * given patterns.
-     */
     @Test
-    public void checksIfStringContainsAllPatterns() {
+    void checksIfStringContainsAllPatterns() {
         MatcherAssert.assertThat(
             "asjbclkjbxhui",
             Matchers.allOf(

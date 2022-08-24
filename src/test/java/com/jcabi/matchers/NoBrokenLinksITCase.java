@@ -40,14 +40,10 @@ import org.junit.jupiter.api.Test;
  * Integration case for {@link NoBrokenLinks}.
  * @since 0.1
  */
-public final class NoBrokenLinksITCase {
+final class NoBrokenLinksITCase {
 
-    /**
-     * NoBrokenLinks can find broken links in HTML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void findsBrokenLinksInHtml() throws Exception {
+    void findsBrokenLinksInHtml() throws Exception {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
                 StringUtils.join(

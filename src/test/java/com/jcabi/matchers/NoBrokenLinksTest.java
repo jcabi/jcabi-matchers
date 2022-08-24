@@ -41,14 +41,10 @@ import org.junit.jupiter.api.Test;
  * Test case for {@link NoBrokenLinks}.
  * @since 0.1
  */
-public final class NoBrokenLinksTest {
+final class NoBrokenLinksTest {
 
-    /**
-     * NoBrokenLinks can find empty links in HTML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void findsEmptyLinksInHtml() throws Exception {
+    void findsEmptyLinksInHtml() throws Exception {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
                 StringUtils.join(
@@ -62,12 +58,8 @@ public final class NoBrokenLinksTest {
         );
     }
 
-    /**
-     * NoBrokenLinks can find empty links in HTML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void findsBrLinksInHtmlWithNamespace() throws Exception {
+    void findsBrLinksInHtmlWithNamespace() throws Exception {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
                 StringUtils.join(
@@ -82,12 +74,8 @@ public final class NoBrokenLinksTest {
         );
     }
 
-    /**
-     * NoBrokenLinks can pass without broken links in HTML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void passesWithoutBrokenLinks() throws Exception {
+    void passesWithoutBrokenLinks() throws Exception {
         MatcherAssert.assertThat(
             new FakeRequest().withBody(
                 StringUtils.join(
@@ -101,12 +89,8 @@ public final class NoBrokenLinksTest {
         );
     }
 
-    /**
-     * NoBrokenLinks can throw for a broken HTML.
-     * @throws Exception If something goes wrong inside
-     */
     @Test
-    public void throwsWhenHtmlIsBroken() {
+    void throwsWhenHtmlIsBroken() {
         Assertions.assertThrows(
             IllegalArgumentException.class,
             () ->
