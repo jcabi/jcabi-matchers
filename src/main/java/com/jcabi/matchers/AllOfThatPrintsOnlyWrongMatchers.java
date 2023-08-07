@@ -29,18 +29,18 @@
  */
 package com.jcabi.matchers;
 
-import com.jcabi.aspects.Tv;
 import java.util.ArrayList;
 import java.util.List;
 import org.hamcrest.Description;
 import org.hamcrest.DiagnosingMatcher;
 import org.hamcrest.Matcher;
+import org.hamcrest.core.AllOf;
 
 /**
  * Matcher that test if all matchers matches, but print info about only that
  * ones who failed.
  *
- * Based in {@link AllOf}
+ * Based in {@link AllOf}.
  *
  * @param <T> Type of argument
  * @since 0.2.6
@@ -66,7 +66,7 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
     ) {
         super();
         this.matchers = iterable;
-        this.wrong = new ArrayList<Matcher<? super T>>(Tv.THREE);
+        this.wrong = new ArrayList<>(3);
     }
 
     @Override
