@@ -7,7 +7,7 @@
 <body>
 <div id="overview"><a href="../../../../apidocs/com/jcabi/matchers/XhtmlMatchers.html">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2011-2022, jcabi.com</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2011-2023, jcabi.com</em>
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * All rights reserved.</em>
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * Redistribution and use in source and binary forms, with or without</em>
@@ -67,12 +67,12 @@
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  @ToString
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  @EqualsAndHashCode
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  @SuppressWarnings(<span class="jxr_string">"PMD.ProhibitPublicStaticMethods"</span>)
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../com/jcabi/matchers/XhtmlMatchers.html">XhtmlMatchers</a> {
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a name="XhtmlMatchers" href="../../../com/jcabi/matchers/XhtmlMatchers.html#XhtmlMatchers">XhtmlMatchers</a> {
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">     * Private ctor, it's a utility class.</em>
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a href="../../../com/jcabi/matchers/XhtmlMatchers.html">XhtmlMatchers</a>() {
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a name="XhtmlMatchers" href="../../../com/jcabi/matchers/XhtmlMatchers.html#XhtmlMatchers">XhtmlMatchers</a>() {
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>          <em class="jxr_comment">// intentionally empty</em>
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>      }
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
@@ -104,7 +104,7 @@
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>          } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (xhtml instanceof InputStream) {
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>              <strong class="jxr_keyword">final</strong> InputStream stream = InputStream.<strong class="jxr_keyword">class</strong>.<strong class="jxr_keyword">cast</strong>(xhtml);
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>              <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>                  source = <strong class="jxr_keyword">new</strong> <a href="../../../com/jcabi/matchers/StringSource.html">StringSource</a>(
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>                  source = <strong class="jxr_keyword">new</strong> StringSource(
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>                     readAsString(<strong class="jxr_keyword">new</strong> InputStreamReader(stream, <span class="jxr_string">"UTF-8"</span>))
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>                 );
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>             } <strong class="jxr_keyword">catch</strong> (<strong class="jxr_keyword">final</strong> UnsupportedEncodingException ex) {
@@ -112,11 +112,11 @@
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>             }
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (xhtml instanceof Reader) {
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>             <strong class="jxr_keyword">final</strong> Reader reader = Reader.<strong class="jxr_keyword">class</strong>.<strong class="jxr_keyword">cast</strong>(xhtml);
-<a class="jxr_linenumber" name="L107" href="#L107">107</a>             source = <strong class="jxr_keyword">new</strong> <a href="../../../com/jcabi/matchers/StringSource.html">StringSource</a>(readAsString(reader));
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>             source = <strong class="jxr_keyword">new</strong> StringSource(readAsString(reader));
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (xhtml instanceof Node) {
-<a class="jxr_linenumber" name="L109" href="#L109">109</a>             source = <strong class="jxr_keyword">new</strong> <a href="../../../com/jcabi/matchers/StringSource.html">StringSource</a>(Node.<strong class="jxr_keyword">class</strong>.<strong class="jxr_keyword">cast</strong>(xhtml));
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>             source = <strong class="jxr_keyword">new</strong> StringSource(Node.<strong class="jxr_keyword">class</strong>.<strong class="jxr_keyword">cast</strong>(xhtml));
 <a class="jxr_linenumber" name="L110" href="#L110">110</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L111" href="#L111">111</a>             source = <strong class="jxr_keyword">new</strong> <a href="../../../com/jcabi/matchers/StringSource.html">StringSource</a>(xhtml.toString());
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>             source = <strong class="jxr_keyword">new</strong> StringSource(xhtml.toString());
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>         }
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>         <strong class="jxr_keyword">return</strong> source;
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>     }
@@ -204,6 +204,6 @@
 <a class="jxr_linenumber" name="L196" href="#L196">196</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2012&#x2013;2022 <a href="https://www.jcabi.com">jcabi.com</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2012&#x2013;2023 <a href="https://www.jcabi.com">jcabi.com</a>. All rights reserved.</div>
 </body>
 </html>
