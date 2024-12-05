@@ -1,7 +1,6 @@
 # A Few Matchers for Hamcrest
 
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
-[![Managed by Zerocracy](https://www.0crat.com/badge/C3RUBL5H9.svg)](https://www.0crat.com/p/C3RUBL5H9)
 [![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-matchers)](http://www.rultor.com/p/jcabi/jcabi-matchers)
 
 [![mvn](https://github.com/jcabi/jcabi-matchers/actions/workflows/mvn.yml/badge.svg)](https://github.com/jcabi/jcabi-matchers/actions/workflows/mvn.yml)
@@ -14,7 +13,17 @@ More details are here:
 [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
 Also, read this blog post: [XML/XPath Matchers for Hamcrest][blog].
 
-The library contains a collection of convenient Hamcrest matchers. For example:
+First, you add this to your `pom.xml`:
+
+```xml
+<dependency>
+  <groupId>com.jcabi</groupId>
+  <artifactId>jcabi-matchers</artifactId>
+  <version>1.7.0</version>
+</dependency>
+```
+
+The library contains a collection of convenient Hamcrest matchers:
 
 ```java
 import com.jcabi.matchers.XhtmlMatchers;
