@@ -31,6 +31,7 @@ package com.jcabi.matchers;
 
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -51,7 +52,7 @@ import org.w3c.dom.Element;
 final class XhtmlMatchersTest {
 
     @Test
-    void matchesWithCustomNamespace() throws Exception {
+    void matchesWithCustomNamespace() {
         MatcherAssert.assertThat(
             "<a xmlns='foo'><file>abc.txt</file></a>",
             XhtmlMatchers.hasXPath("/ns1:a/ns1:file[.='abc.txt']", "foo")
@@ -59,7 +60,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void doesntMatch() throws Exception {
+    void doesntMatch() {
         MatcherAssert.assertThat(
             "<a/>",
             Matchers.not(XhtmlMatchers.hasXPath("/foo"))
@@ -67,7 +68,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesPlainString() throws Exception {
+    void matchesPlainString() {
         MatcherAssert.assertThat(
             "<b xmlns='bar'><file>abc.txt</file></b>",
             XhtmlMatchers.hasXPath("/ns1:b/ns1:file[.='abc.txt']", "bar")
@@ -76,7 +77,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesInputStreamAndReader() throws Exception {
+    void matchesInputStreamAndReader() {
         MatcherAssert.assertThat(
             IOUtils.toInputStream(
                 "<b><file>foo.txt</file></b>",
@@ -105,7 +106,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesWithGenericType() throws Exception {
+    void matchesWithGenericType() {
         final Foo foo = new Foo();
         MatcherAssert.assertThat(
             foo,
@@ -117,7 +118,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void convertsTextToXml() throws Exception {
+    void convertsTextToXml() {
         MatcherAssert.assertThat(
             StringUtils.join(
                 "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
@@ -128,7 +129,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void convertsTextToXmlWithUnicode() throws Exception {
+    void convertsTextToXmlWithUnicode() {
         MatcherAssert.assertThat(
             "<a>\u8514  &#8250;</a>",
             XhtmlMatchers.hasXPath("/a")
@@ -136,7 +137,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void preservesProcessingInstructions() throws Exception {
+    void preservesProcessingInstructions() {
         MatcherAssert.assertThat(
             "<?xml version='1.0'?><?pi name='foo'?><a/>",
             XhtmlMatchers.hasXPath(
@@ -146,7 +147,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void processesDocumentsWithDoctype() throws Exception {
+    void processesDocumentsWithDoctype() {
         final String text =
             // @checkstyle StringLiteralsConcatenation (6 lines)
             "<?xml version='1.0'?>"
@@ -184,7 +185,7 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void hasXPaths() throws Exception {
+    void hasXPaths() {
         MatcherAssert.assertThat(
             "<b><file>def.txt</file><file>ghi.txt</file></b>",
             XhtmlMatchers.hasXPaths(
@@ -200,9 +201,11 @@ final class XhtmlMatchersTest {
             MatcherAssert.assertThat(
                 "<b><file>some.txt</file><file>gni.txt</file></b>",
                 XhtmlMatchers.hasXPaths(
-                    "/b/file[.='some.txt']",
-                    "/b/file[.='gnx.txt']",
-                    "/b/file[.='gni.txt']"
+                    Arrays.asList(
+                        "/b/file[.='some.txt']",
+                        "/b/file[.='gnx.txt']",
+                        "/b/file[.='gni.txt']"
+                    )
                 )
             );
         } catch (final AssertionError error) {

@@ -34,8 +34,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Scanner;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.Source;
@@ -164,12 +165,22 @@ public final class XhtmlMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static <T> Matcher<T> hasXPaths(final String...xpaths) {
-        final Collection<Matcher<? super T>> list =
-            new ArrayList<>(xpaths.length);
+        return XhtmlMatchers.hasXPaths(Arrays.asList(xpaths));
+    }
+
+    /**
+     * Matches content against list of XPaths.
+     * @param xpaths The query
+     * @param <T> Type of XML content provided
+     * @return Matcher suitable for JUnit/Hamcrest matching
+     * @since 1.8.0
+     */
+    public static <T> Matcher<T> hasXPaths(final Iterable<String> xpaths) {
+        final Collection<Matcher<? super T>> list = new LinkedList<>();
         for (final String xpath : xpaths) {
-            list.add(XhtmlMatchers.<T>hasXPath(xpath));
+            list.add(XhtmlMatchers.hasXPath(xpath));
         }
-        return new AllOfThatPrintsOnlyWrongMatchers<T>(list);
+        return new AllOfThatPrintsOnlyWrongMatchers<>(list);
     }
 
     /**

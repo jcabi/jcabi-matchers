@@ -45,7 +45,7 @@ import org.w3c.dom.Node;
 final class StringSourceTest {
 
     @Test
-    void formatsIncomingXmlDocument() throws Exception {
+    void formatsIncomingXmlDocument() {
         final String xml = "<a><b>\u0443\u0440\u0430!</b></a>";
         MatcherAssert.assertThat(
             new StringSource(xml).toString(),
