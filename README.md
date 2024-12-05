@@ -40,7 +40,6 @@ Here, we use `xhtml` predefined namespace. There are also
 `xsl`, `xs`, `xsi`, and `svg` namespaces
 provided off-the-shelf. However, you can define your own too, for example:
 
-
 ```java
 MatcherAssert.assertThat(
   "<foo xmlns='my-own-namespace'><bar/></foo>",
