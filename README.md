@@ -1,4 +1,4 @@
-<img src="https://www.jcabi.com/logo-square.svg" width="64px" height="64px" />
+# A Few Matchers for Hamcrest
 
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![Managed by Zerocracy](https://www.0crat.com/badge/C3RUBL5H9.svg)](https://www.0crat.com/p/C3RUBL5H9)
@@ -10,8 +10,9 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 [![codecov](https://codecov.io/gh/jcabi/jcabi-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-matchers)
 
-More details are here: [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
-Also, read this blog post: [XML/XPath Matchers for Hamcrest](http://www.yegor256.com/2014/04/28/xml-xpath-hamcrest-matchers.html).
+More details are here:
+[matchers.jcabi.com](http://matchers.jcabi.com/index.html).
+Also, read this blog post: [XML/XPath Matchers for Hamcrest][blog].
 
 The library contains a collection of convenient Hamcrest matchers. For example:
 
@@ -25,7 +26,8 @@ MatcherAssert.assertThat(
 );
 ```
 
-To match XHTML documents you need to specify namespaces in your XPath expressions:
+To match XHTML documents you need to specify namespaces in your
+XPath expressions:
 
 ```java
 MatcherAssert.assertThat(
@@ -34,7 +36,8 @@ MatcherAssert.assertThat(
 );
 ```
 
-Here, we use `xhtml` predefined namespace. There are also `xsl`, `xs`, `xsi`, and `svg` namespaces
+Here, we use `xhtml` predefined namespace. There are also
+`xsl`, `xs`, `xsi`, and `svg` namespaces
 provided off-the-shelf. However, you can define your own too, for example:
 
 
@@ -55,6 +58,8 @@ the `master` branch, if they look correct.
 
 Please run Maven build before submitting a pull request:
 
+```bash
+mvn clean install -Pqulice
 ```
-$ mvn clean install -Pqulice
-```
+
+[blog]: http://www.yegor256.com/2014/04/28/xml-xpath-hamcrest-matchers.html
