@@ -1,11 +1,11 @@
 # A Few Matchers for Hamcrest
 
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
-[![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-matchers)](http://www.rultor.com/p/jcabi/jcabi-matchers)
+[![DevOps By Rultor.com](https://www.rultor.com/b/jcabi/jcabi-matchers)](https://www.rultor.com/p/jcabi/jcabi-matchers)
 
 [![mvn](https://github.com/jcabi/jcabi-matchers/actions/workflows/mvn.yml/badge.svg)](https://github.com/jcabi/jcabi-matchers/actions/workflows/mvn.yml)
-[![PDD status](http://www.0pdd.com/svg?name=jcabi/jcabi-matchers)](http://www.0pdd.com/p?name=jcabi/jcabi-matchers)
-[![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-matchers.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
+[![PDD status](https://www.0pdd.com/svg?name=jcabi/jcabi-matchers)](https://www.0pdd.com/p?name=jcabi/jcabi-matchers)
+[![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-matchers.svg)](https://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 [![codecov](https://codecov.io/gh/jcabi/jcabi-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-matchers)
 
