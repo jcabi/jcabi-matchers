@@ -44,7 +44,7 @@ final class StringSource extends DOMSource {
     StringSource(final String text) {
         super();
         this.xml = text;
-        super.setNode(new XMLDocument(text).node());
+        super.setNode(new XMLDocument(text).deepCopy());
     }
 
     /**
