@@ -39,7 +39,7 @@
 JAXB Converter
 
   The object has to be annotated with JAXB annotations
-  in order to be convertable.
+  in order to be convertible.
   Let's consider an example JAXB-annotated class:
 
 +--
@@ -57,7 +57,7 @@ public class Employee {
 }
 +--
 
-  Now you want to test how it works with real data after convertion
+  Now you want to test how it works with real data after conversion
   to XML (in a unit test):
 
 +--
