@@ -35,7 +35,7 @@ public final class RegexMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-    public static Matcher<String> matchesAnyPattern(final String...patterns) {
+    public static Matcher<String> matchesAnyPattern(final String... patterns) {
         final Collection<Matcher<? super String>> matchers =
             new ArrayList<>(patterns.length);
         for (final String pattern : patterns) {

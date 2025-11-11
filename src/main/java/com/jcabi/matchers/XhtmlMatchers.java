@@ -139,7 +139,7 @@ public final class XhtmlMatchers {
      * @param <T> Type of XML content provided
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
-    public static <T> Matcher<T> hasXPaths(final String...xpaths) {
+    public static <T> Matcher<T> hasXPaths(final String... xpaths) {
         return XhtmlMatchers.hasXPaths(Arrays.asList(xpaths));
     }
 
