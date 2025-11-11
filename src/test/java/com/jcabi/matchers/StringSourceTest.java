@@ -23,6 +23,7 @@ final class StringSourceTest {
     void formatsIncomingXmlDocument() {
         final String xml = "<a><b>\u0443\u0440\u0430!</b></a>";
         MatcherAssert.assertThat(
+            "should contains a string",
             new StringSource(xml).toString(),
             Matchers.containsString("&#443;")
         );
@@ -41,6 +42,7 @@ final class StringSourceTest {
             new ByteArrayInputStream(xml.getBytes())
         );
         MatcherAssert.assertThat(
+            "should equals to the node",
             new StringSource(node).toString(),
             Matchers.equalTo(
                 StringUtils.join(

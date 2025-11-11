@@ -17,6 +17,7 @@ final class RegexMatchersTest {
     @Test
     void matchesStringToPatterns() {
         MatcherAssert.assertThat(
+            "should matches any pattern",
             "zxc456",
             RegexMatchers.matchesAnyPattern("[zxc]+\\d{3}", "[abc]+")
         );
@@ -25,6 +26,7 @@ final class RegexMatchersTest {
     @Test
     void matchesStringToPattern() {
         MatcherAssert.assertThat(
+            "should matches all of patterns",
             "abc123",
             Matchers.allOf(
                 RegexMatchers.matchesPattern("[a-c]+\\d{3}"),
