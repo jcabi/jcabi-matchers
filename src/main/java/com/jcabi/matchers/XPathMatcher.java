@@ -16,8 +16,8 @@ import org.hamcrest.TypeSafeMatcher;
  *
  * <p>Objects of this class are immutable and thread-safe.
  *
- * @since 0.3.7
  * @param <T> Type of param
+ * @since 0.3.7
  */
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "xpath")
