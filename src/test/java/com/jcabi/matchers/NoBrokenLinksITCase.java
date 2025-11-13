@@ -20,6 +20,7 @@ final class NoBrokenLinksITCase {
     @Test
     void findsBrokenLinksInHtml() throws Exception {
         MatcherAssert.assertThat(
+            "should finds the broken links",
             new FakeRequest().withBody(
                 StringUtils.join(
                     "<html xmlns='http://www.w3.org/1999/xhtml'><head>",
