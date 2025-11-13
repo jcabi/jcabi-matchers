@@ -51,7 +51,7 @@ final class XhtmlMatchersTest {
             "<b xmlns='bar'><file>abc.txt</file></b>",
             XhtmlMatchers.hasXPath("/ns1:b/ns1:file[.='abc.txt']", "bar")
         );
-        MatcherAssert.assertThat("<a><b/></a>", XhtmlMatchers.hasXPath("//b"));
+        MatcherAssert.assertThat("should has xpath", "<a><b/></a>", XhtmlMatchers.hasXPath("//b"));
     }
 
     @Test
@@ -199,6 +199,7 @@ final class XhtmlMatchersTest {
             );
         } catch (final AssertionError error) {
             MatcherAssert.assertThat(
+                "should contains a string",
                 error.getMessage(),
                 Matchers.containsString(
                     "Expected: (an XML document with XPath /b/file[.='gnx.txt'])"
