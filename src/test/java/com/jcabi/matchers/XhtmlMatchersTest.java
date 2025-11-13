@@ -29,6 +29,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesWithCustomNamespace() {
         MatcherAssert.assertThat(
+            "should has xpath",
             "<a xmlns='foo'><file>abc.txt</file></a>",
             XhtmlMatchers.hasXPath("/ns1:a/ns1:file[.='abc.txt']", "foo")
         );
@@ -37,6 +38,7 @@ final class XhtmlMatchersTest {
     @Test
     void doesntMatch() {
         MatcherAssert.assertThat(
+            "should has xpath",
             "<a/>",
             Matchers.not(XhtmlMatchers.hasXPath("/foo"))
         );
@@ -45,6 +47,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesPlainString() {
         MatcherAssert.assertThat(
+            "should has xpath",
             "<b xmlns='bar'><file>abc.txt</file></b>",
             XhtmlMatchers.hasXPath("/ns1:b/ns1:file[.='abc.txt']", "bar")
         );
@@ -54,6 +57,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesInputStreamAndReader() {
         MatcherAssert.assertThat(
+            "should has xpath",
             IOUtils.toInputStream(
                 "<b><file>foo.txt</file></b>",
                 StandardCharsets.UTF_8
@@ -61,6 +65,7 @@ final class XhtmlMatchersTest {
             XhtmlMatchers.hasXPath("/b/file[.='foo.txt']")
         );
         MatcherAssert.assertThat(
+            "should has xpath",
             new InputStreamReader(
                 IOUtils.toInputStream(
                     "<xx><y/></xx>",
@@ -75,6 +80,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesAfterJaxbConverter() throws Exception {
         MatcherAssert.assertThat(
+            "should has xpath",
             JaxbConverter.the(new Foo()),
             XhtmlMatchers.hasXPath("/ns1:foo", Foo.NAMESPACE)
         );
@@ -84,6 +90,7 @@ final class XhtmlMatchersTest {
     void matchesWithGenericType() {
         final Foo foo = new Foo();
         MatcherAssert.assertThat(
+            "should matches all of patterns",
             foo,
             Matchers.allOf(
                 Matchers.hasProperty("abc", Matchers.containsString("some")),
@@ -95,6 +102,7 @@ final class XhtmlMatchersTest {
     @Test
     void convertsTextToXml() {
         MatcherAssert.assertThat(
+            "should has xpath",
             StringUtils.join(
                 "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
                 "<p>\u0443</p></body></html>"
@@ -106,6 +114,7 @@ final class XhtmlMatchersTest {
     @Test
     void convertsTextToXmlWithUnicode() {
         MatcherAssert.assertThat(
+            "should has xpath",
             "<a>\u8514  &#8250;</a>",
             XhtmlMatchers.hasXPath("/a")
         );
@@ -114,6 +123,7 @@ final class XhtmlMatchersTest {
     @Test
     void preservesProcessingInstructions() {
         MatcherAssert.assertThat(
+            "should has xpath",
             "<?xml version='1.0'?><?pi name='foo'?><a/>",
             XhtmlMatchers.hasXPath(
                 "/processing-instruction('pi')[contains(.,'foo')]"
@@ -132,6 +142,7 @@ final class XhtmlMatchersTest {
                 + "<body><p>\u0443\u0440\u0430!</p></body>"
                 + "</html>";
         MatcherAssert.assertThat(
+            "should has xpaths",
             text,
             Matchers.allOf(
                 XhtmlMatchers.hasXPath("/*"),
@@ -154,6 +165,7 @@ final class XhtmlMatchersTest {
         root.appendChild(doc.createTextNode("boom"));
         doc.appendChild(root);
         MatcherAssert.assertThat(
+            "should has xpath",
             doc,
             XhtmlMatchers.hasXPath("/foo-1[.='boom']")
         );
@@ -162,6 +174,7 @@ final class XhtmlMatchersTest {
     @Test
     void hasXPaths() {
         MatcherAssert.assertThat(
+            "should has xpaths",
             "<b><file>def.txt</file><file>ghi.txt</file></b>",
             XhtmlMatchers.hasXPaths(
                 "/b/file[.='def.txt']",
@@ -174,6 +187,7 @@ final class XhtmlMatchersTest {
     void hasXPathsPrintsOnlyWrongXPaths() {
         try {
             MatcherAssert.assertThat(
+                "should has xpaths",
                 "<b><file>some.txt</file><file>gni.txt</file></b>",
                 XhtmlMatchers.hasXPaths(
                     Arrays.asList(
