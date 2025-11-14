@@ -29,7 +29,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesWithCustomNamespace() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should matches with custom namespace",
             "<a xmlns='foo'><file>abc.txt</file></a>",
             XhtmlMatchers.hasXPath("/ns1:a/ns1:file[.='abc.txt']", "foo")
         );
@@ -38,7 +38,7 @@ final class XhtmlMatchersTest {
     @Test
     void doesntMatch() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should does not match",
             "<a/>",
             Matchers.not(XhtmlMatchers.hasXPath("/foo"))
         );
@@ -57,7 +57,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesInputStreamAndReader() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should matches input stream and reader",
             IOUtils.toInputStream(
                 "<b><file>foo.txt</file></b>",
                 StandardCharsets.UTF_8
@@ -65,7 +65,7 @@ final class XhtmlMatchersTest {
             XhtmlMatchers.hasXPath("/b/file[.='foo.txt']")
         );
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should matches input stream and reader",
             new InputStreamReader(
                 IOUtils.toInputStream(
                     "<xx><y/></xx>",
@@ -80,7 +80,7 @@ final class XhtmlMatchersTest {
     @Test
     void matchesAfterJaxbConverter() throws Exception {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should matches after jaxb converter",
             JaxbConverter.the(new Foo()),
             XhtmlMatchers.hasXPath("/ns1:foo", Foo.NAMESPACE)
         );
@@ -102,7 +102,7 @@ final class XhtmlMatchersTest {
     @Test
     void convertsTextToXml() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should converts text to xml",
             StringUtils.join(
                 "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
                 "<p>\u0443</p></body></html>"
@@ -114,7 +114,7 @@ final class XhtmlMatchersTest {
     @Test
     void convertsTextToXmlWithUnicode() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should converts text to xml with unicode",
             "<a>\u8514  &#8250;</a>",
             XhtmlMatchers.hasXPath("/a")
         );
@@ -123,7 +123,7 @@ final class XhtmlMatchersTest {
     @Test
     void preservesProcessingInstructions() {
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should preserves processing instructions",
             "<?xml version='1.0'?><?pi name='foo'?><a/>",
             XhtmlMatchers.hasXPath(
                 "/processing-instruction('pi')[contains(.,'foo')]"
@@ -142,7 +142,7 @@ final class XhtmlMatchersTest {
                 + "<body><p>\u0443\u0440\u0430!</p></body>"
                 + "</html>";
         MatcherAssert.assertThat(
-            "should has xpaths",
+            "should processes documents with doctype",
             text,
             Matchers.allOf(
                 XhtmlMatchers.hasXPath("/*"),
@@ -165,7 +165,7 @@ final class XhtmlMatchersTest {
         root.appendChild(doc.createTextNode("boom"));
         doc.appendChild(root);
         MatcherAssert.assertThat(
-            "should has xpath",
+            "should converts node to xml",
             doc,
             XhtmlMatchers.hasXPath("/foo-1[.='boom']")
         );
@@ -187,7 +187,7 @@ final class XhtmlMatchersTest {
     void hasXPathsPrintsOnlyWrongXPaths() {
         try {
             MatcherAssert.assertThat(
-                "should has xpaths",
+                "should has xpaths prints only wrong xpaths",
                 "<b><file>some.txt</file><file>gni.txt</file></b>",
                 XhtmlMatchers.hasXPaths(
                     Arrays.asList(
