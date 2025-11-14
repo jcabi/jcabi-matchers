@@ -79,8 +79,11 @@ public final class XhtmlMatchers {
                 throw new IllegalStateException(ex);
             }
         } else if (xhtml instanceof Reader) {
-            final Reader reader = (Reader) xhtml;
-            source = new StringSource(readAsString(reader));
+            try (Reader reader = (Reader) xhtml) {
+                source = new StringSource(readAsString(reader));
+            } catch (final IOException ex) {
+                throw new IllegalStateException(ex);
+            }
         } else if (xhtml instanceof Node) {
             source = new StringSource((Node) xhtml);
         } else {
