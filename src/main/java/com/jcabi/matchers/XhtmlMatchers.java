@@ -164,18 +164,13 @@ public final class XhtmlMatchers {
      * @return The reader content, in String form
      */
     private static String readAsString(final Reader reader) {
-        @SuppressWarnings("resource")
-        final Scanner scanner =
-            new Scanner(reader).useDelimiter("\\A");
         final String result;
-        try {
+        try (Scanner scanner = new Scanner(reader).useDelimiter("\\A")) {
             if (scanner.hasNext()) {
                 result = scanner.next();
             } else {
                 result = "";
             }
-        } finally {
-            scanner.close();
         }
         return result;
     }
