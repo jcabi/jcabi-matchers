@@ -5,10 +5,11 @@
 package com.jcabi.matchers;
 
 import com.jcabi.xml.XPathContext;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -68,21 +69,23 @@ public final class XhtmlMatchers {
     public static <T> Source xhtml(final T xhtml) {
         final Source source;
         if (xhtml instanceof Source) {
-            source = Source.class.cast(xhtml);
+            source = (Source) xhtml;
         } else if (xhtml instanceof InputStream) {
-            final InputStream stream = InputStream.class.cast(xhtml);
-            try {
+            try (InputStream stream = (InputStream) xhtml) {
                 source = new StringSource(
-                    readAsString(new InputStreamReader(stream, "UTF-8"))
+                    readAsString(new InputStreamReader(stream, StandardCharsets.UTF_8))
                 );
-            } catch (final UnsupportedEncodingException ex) {
+            } catch (final IOException ex) {
                 throw new IllegalStateException(ex);
             }
         } else if (xhtml instanceof Reader) {
-            final Reader reader = Reader.class.cast(xhtml);
-            source = new StringSource(readAsString(reader));
+            try (Reader reader = (Reader) xhtml) {
+                source = new StringSource(readAsString(reader));
+            } catch (final IOException ex) {
+                throw new IllegalStateException(ex);
+            }
         } else if (xhtml instanceof Node) {
-            source = new StringSource(Node.class.cast(xhtml));
+            source = new StringSource((Node) xhtml);
         } else {
             source = new StringSource(xhtml.toString());
         }
@@ -139,7 +142,7 @@ public final class XhtmlMatchers {
      * @param <T> Type of XML content provided
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
-    public static <T> Matcher<T> hasXPaths(final String...xpaths) {
+    public static <T> Matcher<T> hasXPaths(final String... xpaths) {
         return XhtmlMatchers.hasXPaths(Arrays.asList(xpaths));
     }
 
@@ -164,18 +167,13 @@ public final class XhtmlMatchers {
      * @return The reader content, in String form
      */
     private static String readAsString(final Reader reader) {
-        @SuppressWarnings("resource")
-        final Scanner scanner =
-            new Scanner(reader).useDelimiter("\\A");
         final String result;
-        try {
+        try (Scanner scanner = new Scanner(reader).useDelimiter("\\A")) {
             if (scanner.hasNext()) {
                 result = scanner.next();
             } else {
                 result = "";
             }
-        } finally {
-            scanner.close();
         }
         return result;
     }

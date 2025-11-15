@@ -21,6 +21,7 @@ final class NoBrokenLinksTest {
     @Test
     void findsEmptyLinksInHtml() throws Exception {
         MatcherAssert.assertThat(
+            "should finds the empty links",
             new FakeRequest().withBody(
                 StringUtils.join(
                     "<html xmlns='http://www.w3.org/1999/xhtml'><head>",
@@ -36,6 +37,7 @@ final class NoBrokenLinksTest {
     @Test
     void findsBrLinksInHtmlWithNamespace() throws Exception {
         MatcherAssert.assertThat(
+            "should finds the broken links",
             new FakeRequest().withBody(
                 StringUtils.join(
                     "<html xmlns='http://www.w3.org/1999/xhtml' >",
@@ -52,6 +54,7 @@ final class NoBrokenLinksTest {
     @Test
     void passesWithoutBrokenLinks() throws Exception {
         MatcherAssert.assertThat(
+            "should pass without broken links",
             new FakeRequest().withBody(
                 StringUtils.join(
                     "<html xmlns='http://www.w3.org/1999/xhtml'>",
@@ -70,6 +73,7 @@ final class NoBrokenLinksTest {
             IllegalArgumentException.class,
             () ->
                 MatcherAssert.assertThat(
+                    "should matches valid html",
                     new FakeRequest().withBody("not HTML at all").fetch(),
                     new NoBrokenLinks(new URI("#"))
                 )

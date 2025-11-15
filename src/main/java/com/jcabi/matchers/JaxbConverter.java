@@ -21,7 +21,7 @@ import lombok.ToString;
  * JAXB-empowered object to XML converting utility.
  *
  * <p>The object has to be annotated with JAXB annotations
- * in order to be convertable. Let's consider an example JAXB-annotated class:
+ * in order to be convertible. Let's consider an example JAXB-annotated class:
  *
  * <pre> import javax.xml.bind.annotation.XmlAccessType;
  * import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,7 +36,7 @@ import lombok.ToString;
  *   }
  * }</pre>
  *
- * <p>Now you want to test how it works with real data after convertion
+ * <p>Now you want to test how it works with real data after conversion
  * to XML (in a unit test):
  *
  * <pre> import com.jcabi.matchers.JaxbConverter;
