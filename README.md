@@ -8,6 +8,7 @@
 [![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-matchers.svg)](https://www.javadoc.io/doc/com.jcabi/jcabi-matchers)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-matchers)
 [![codecov](https://codecov.io/gh/jcabi/jcabi-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-matchers)
+[![libs.tech recommends](https://libs.tech/project/19194296/badge.svg)](https://libs.tech/project/19194296/jcabi-matchers)
 
 More details are here:
 [matchers.jcabi.com](http://matchers.jcabi.com/index.html).
