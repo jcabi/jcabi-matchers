@@ -5,7 +5,6 @@
 package com.jcabi.matchers;
 
 import com.jcabi.xml.XPathContext;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -71,19 +70,16 @@ public final class XhtmlMatchers {
         if (xhtml instanceof Source) {
             source = (Source) xhtml;
         } else if (xhtml instanceof InputStream) {
-            try (InputStream stream = (InputStream) xhtml) {
-                source = new StringSource(
-                    readAsString(new InputStreamReader(stream, StandardCharsets.UTF_8))
-                );
-            } catch (final IOException ex) {
-                throw new IllegalStateException(ex);
-            }
+            source = new StringSource(
+                readAsString(
+                    new InputStreamReader(
+                        (InputStream) xhtml,
+                        StandardCharsets.UTF_8
+                    )
+                )
+            );
         } else if (xhtml instanceof Reader) {
-            try (Reader reader = (Reader) xhtml) {
-                source = new StringSource(readAsString(reader));
-            } catch (final IOException ex) {
-                throw new IllegalStateException(ex);
-            }
+            source = new StringSource(readAsString((Reader) xhtml));
         } else if (xhtml instanceof Node) {
             source = new StringSource((Node) xhtml);
         } else {

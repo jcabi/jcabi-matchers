@@ -21,20 +21,18 @@ final class JaxbConverterTest {
 
     @Test
     void convertsJaxbObjectToXml() throws Exception {
-        final Object object = new JaxbConverterTest.Employee();
         MatcherAssert.assertThat(
             "should has xpath",
-            JaxbConverter.the(object),
+            JaxbConverter.the(new JaxbConverterTest.Employee()),
             XhtmlMatchers.hasXPath("/employee/name[.='\u0443\u0440\u0430']")
         );
     }
 
     @Test
     void convertsObjectToSourceRenderableAsText() throws Exception {
-        final Object object = new JaxbConverterTest.Employee();
         MatcherAssert.assertThat(
             "should contains a string",
-            JaxbConverter.the(object).toString(),
+            JaxbConverter.the(new JaxbConverterTest.Employee()).toString(),
             Matchers.containsString("&#443;")
         );
     }
@@ -56,20 +54,18 @@ final class JaxbConverterTest {
 
     @Test
     void convertsNonRootObject() throws Exception {
-        final Object object = new JaxbConverterTest.Bar();
         MatcherAssert.assertThat(
             "should has xpath",
-            JaxbConverter.the(object),
+            JaxbConverter.the(new JaxbConverterTest.Bar()),
             XhtmlMatchers.hasXPath("/bar/name")
         );
     }
 
     @Test
     void convertsNonRootObjectWithNamespace() throws Exception {
-        final Object object = new JaxbConverterTest.Foo();
         MatcherAssert.assertThat(
             "should has xpath",
-            JaxbConverter.the(object),
+            JaxbConverter.the(new JaxbConverterTest.Foo()),
             XhtmlMatchers.hasXPath(
                 "/ns1:foo/ns1:name", JaxbConverterTest.Foo.NAMESPACE
             )

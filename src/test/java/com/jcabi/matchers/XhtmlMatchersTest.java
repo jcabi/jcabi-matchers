@@ -45,27 +45,39 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesPlainString() {
+    void matchesPlainStringWithNamespace() {
         MatcherAssert.assertThat(
             "should has xpath",
             "<b xmlns='bar'><file>abc.txt</file></b>",
             XhtmlMatchers.hasXPath("/ns1:b/ns1:file[.='abc.txt']", "bar")
         );
-        MatcherAssert.assertThat("should has xpath", "<a><b/></a>", XhtmlMatchers.hasXPath("//b"));
     }
 
     @Test
-    void matchesInputStreamAndReader() {
+    void matchesPlainStringWithoutNamespace() {
         MatcherAssert.assertThat(
-            "should matches input stream and reader",
+            "should has xpath",
+            "<a><b/></a>",
+            XhtmlMatchers.hasXPath("//b")
+        );
+    }
+
+    @Test
+    void matchesInputStream() {
+        MatcherAssert.assertThat(
+            "should matches input stream",
             IOUtils.toInputStream(
                 "<b><file>foo.txt</file></b>",
                 StandardCharsets.UTF_8
             ),
             XhtmlMatchers.hasXPath("/b/file[.='foo.txt']")
         );
+    }
+
+    @Test
+    void matchesReader() {
         MatcherAssert.assertThat(
-            "should matches input stream and reader",
+            "should matches reader",
             new InputStreamReader(
                 IOUtils.toInputStream(
                     "<xx><y/></xx>",
@@ -88,10 +100,9 @@ final class XhtmlMatchersTest {
 
     @Test
     void matchesWithGenericType() {
-        final Foo foo = new Foo();
         MatcherAssert.assertThat(
             "should matches all of patterns",
-            foo,
+            new Foo(),
             Matchers.allOf(
                 Matchers.hasProperty("abc", Matchers.containsString("some")),
                 XhtmlMatchers.<Foo>hasXPath("//c")
@@ -133,17 +144,15 @@ final class XhtmlMatchersTest {
 
     @Test
     void processesDocumentsWithDoctype() {
-        final String text =
+        MatcherAssert.assertThat(
+            "should processes documents with doctype",
             // @checkstyle StringLiteralsConcatenation (6 lines)
             "<?xml version='1.0'?>"
                 + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
                 + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
                 + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
                 + "<body><p>\u0443\u0440\u0430!</p></body>"
-                + "</html>";
-        MatcherAssert.assertThat(
-            "should processes documents with doctype",
-            text,
+                + "</html>",
             Matchers.allOf(
                 XhtmlMatchers.hasXPath("/*"),
                 XhtmlMatchers.hasXPath("//*"),
@@ -185,27 +194,22 @@ final class XhtmlMatchersTest {
 
     @Test
     void hasXPathsPrintsOnlyWrongXPaths() {
-        try {
-            MatcherAssert.assertThat(
-                "should has xpaths prints only wrong xpaths",
-                "<b><file>some.txt</file><file>gni.txt</file></b>",
-                XhtmlMatchers.hasXPaths(
-                    Arrays.asList(
-                        "/b/file[.='some.txt']",
-                        "/b/file[.='gnx.txt']",
-                        "/b/file[.='gni.txt']"
-                    )
-                )
-            );
-        } catch (final AssertionError error) {
-            MatcherAssert.assertThat(
-                "should contains a string",
-                error.getMessage(),
-                Matchers.containsString(
-                    "Expected: (an XML document with XPath /b/file[.='gnx.txt'])"
-                )
-            );
-        }
+        final org.hamcrest.Matcher<String> matcher = XhtmlMatchers.hasXPaths(
+            Arrays.asList(
+                "/b/file[.='some.txt']",
+                "/b/file[.='gnx.txt']",
+                "/b/file[.='gni.txt']"
+            )
+        );
+        matcher.matches("<b><file>some.txt</file><file>gni.txt</file></b>");
+        final org.hamcrest.StringDescription description =
+            new org.hamcrest.StringDescription();
+        matcher.describeTo(description);
+        MatcherAssert.assertThat(
+            "should contain wrong xpath in error message",
+            description.toString(),
+            Matchers.containsString("an XML document with XPath /b/file[.='gnx.txt']")
+        );
     }
 
     /**

@@ -34,7 +34,6 @@ public final class RegexMatchers {
      * @param patterns Regular expression patterns
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
-    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public static Matcher<String> matchesAnyPattern(final String... patterns) {
         final Collection<Matcher<? super String>> matchers =
             new ArrayList<>(patterns.length);
@@ -109,7 +108,6 @@ public final class RegexMatchers {
      * @param patterns The given patterns
      * @return A {@link Collection} of {@link Matcher}'s
      */
-    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     private static Collection<Matcher<? super String>> createContainingMatchers(
         final String... patterns) {
         final Collection<Matcher<? super String>> matchers =

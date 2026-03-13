@@ -84,6 +84,7 @@ public final class JaxbConverter {
      * @return DOM source/document
      * @throws JAXBException If an exception occurs inside
      */
+    @SuppressWarnings("unchecked")
     public static Source the(final Object object, final Class<?>... deps)
         throws JAXBException {
         final Class<?>[] classes = new Class<?>[deps.length + 1];
@@ -98,11 +99,9 @@ public final class JaxbConverter {
         final JAXBIntrospector intro = ctx.createJAXBIntrospector();
         Object subject = object;
         if (intro.getElementName(object) == null) {
-            @SuppressWarnings("unchecked")
-            final Class<Object> type = (Class<Object>) object.getClass();
-            subject = new JAXBElement<Object>(
+            subject = new JAXBElement<>(
                 JaxbConverter.qname(object),
-                type,
+                (Class<Object>) object.getClass(),
                 object
             );
         }
@@ -113,8 +112,7 @@ public final class JaxbConverter {
         } catch (final JAXBException ex) {
             throw new AssertionError(ex);
         }
-        final String xml = writer.toString();
-        return new StringSource(xml);
+        return new StringSource(writer.toString());
     }
 
     /**
