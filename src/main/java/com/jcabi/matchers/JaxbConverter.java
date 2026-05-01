@@ -155,5 +155,4 @@ public final class JaxbConverter {
         }
         return qname;
     }
-
 }

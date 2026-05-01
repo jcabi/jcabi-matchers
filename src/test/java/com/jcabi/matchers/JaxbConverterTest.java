@@ -74,12 +74,13 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
-     *
      * @since 0.1
      */
     @XmlRootElement(name = "employee")
     @XmlAccessorType(XmlAccessType.NONE)
-    private static final class Employee {
+    @SuppressWarnings("PMD.PublicMemberInNonPublicType")
+    public static final class Employee {
+
         /**
          * Injected object.
          */
@@ -118,12 +119,13 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
-     *
      * @since 0.1
      */
     @XmlType(name = "foo", namespace = JaxbConverterTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
+    @SuppressWarnings("PMD.PublicMemberInNonPublicType")
     public static final class Foo {
+
         /**
          * XML namespace.
          */
@@ -141,12 +143,13 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
-     *
      * @since 0.1
      */
     @XmlType(name = "bar")
     @XmlAccessorType(XmlAccessType.NONE)
+    @SuppressWarnings("PMD.PublicMemberInNonPublicType")
     public static final class Bar {
+
         /**
          * Simple name.
          * @return The name
@@ -156,5 +159,4 @@ final class JaxbConverterTest {
             return "Bar: \u0443\u0440\u0430";
         }
     }
-
 }

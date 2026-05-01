@@ -57,5 +57,4 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
         description.appendText("an XML document with XPath ")
             .appendText(this.xpath);
     }
-
 }

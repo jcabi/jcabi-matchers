@@ -29,11 +29,11 @@ final class RegexContainingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Public ctor.
-     * @param regex The regular expression to match against.
+     * @param regex The compiled regular expression to match against
      */
-    RegexContainingPatternMatcher(final String regex) {
+    RegexContainingPatternMatcher(final Pattern regex) {
         super();
-        this.pattern = Pattern.compile(regex);
+        this.pattern = regex;
     }
 
     @Override
@@ -46,5 +46,4 @@ final class RegexContainingPatternMatcher extends TypeSafeMatcher<String> {
     public boolean matchesSafely(final String item) {
         return this.pattern.matcher(item).find();
     }
-
 }

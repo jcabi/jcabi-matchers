@@ -29,13 +29,13 @@ final class StringSourceTest {
 
     @Test
     void formatIncomingNode() throws Exception {
+        final String sep = System.lineSeparator();
         MatcherAssert.assertThat(
             "should equals to the node",
             new StringSource(
                 DocumentBuilderFactory
                     .newInstance()
-                    .newDocumentBuilder()
-                    .parse(
+                    .newDocumentBuilder().parse(
                         new ByteArrayInputStream(
                             StringUtils.join(
                                 "<nodeName><?some instruction?><!--comment-->",
@@ -47,12 +47,11 @@ final class StringSourceTest {
             Matchers.equalTo(
                 StringUtils.join(
                     "<nodeName><?some instruction?>",
-                    "<!--comment-->\n   ",
-                    "<a>withText</a>\n   <a/>\n   <a withArg=\"value\"/>\n",
-                    "</nodeName>\n"
+                    "<!--comment-->", sep, "   ",
+                    "<a>withText</a>", sep, "   <a/>", sep, "   <a withArg=\"value\"/>", sep,
+                    "</nodeName>", sep
                 )
             )
         );
     }
-
 }

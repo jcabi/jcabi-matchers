@@ -93,8 +93,8 @@ final class XhtmlMatchersTest {
     void matchesAfterJaxbConverter() throws Exception {
         MatcherAssert.assertThat(
             "should matches after jaxb converter",
-            JaxbConverter.the(new Foo()),
-            XhtmlMatchers.hasXPath("/ns1:foo", Foo.NAMESPACE)
+            JaxbConverter.the(new XhtmlMatchersTest.Foo()),
+            XhtmlMatchers.hasXPath("/ns1:foo", XhtmlMatchersTest.Foo.NAMESPACE)
         );
     }
 
@@ -102,10 +102,10 @@ final class XhtmlMatchersTest {
     void matchesWithGenericType() {
         MatcherAssert.assertThat(
             "should matches all of patterns",
-            new Foo(),
+            new XhtmlMatchersTest.Foo(),
             Matchers.allOf(
                 Matchers.hasProperty("abc", Matchers.containsString("some")),
-                XhtmlMatchers.<Foo>hasXPath("//c")
+                XhtmlMatchers.<XhtmlMatchersTest.Foo>hasXPath("//c")
             )
         );
     }
@@ -214,12 +214,13 @@ final class XhtmlMatchersTest {
 
     /**
      * Foo.
-     *
      * @since 0.1
      */
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
     @XmlAccessorType(XmlAccessType.NONE)
+    @SuppressWarnings("PMD.PublicMemberInNonPublicType")
     public static final class Foo {
+
         /**
          * XML namespace.
          */

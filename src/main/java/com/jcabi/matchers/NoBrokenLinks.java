@@ -21,7 +21,6 @@ import org.hamcrest.Description;
 
 /**
  * Finds broken links in HTML.
- *
  * @since 0.3.4
  */
 @ToString
@@ -159,5 +158,4 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
         }
         return code;
     }
-
 }

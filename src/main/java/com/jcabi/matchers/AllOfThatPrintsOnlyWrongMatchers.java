@@ -34,7 +34,7 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
 
     /**
      * Construct that accept matchers to test.
-     * @param iterable Matchers that will be tested.
+     * @param iterable Matchers that will be tested
      */
     AllOfThatPrintsOnlyWrongMatchers(
         final Iterable<Matcher<? super T>> iterable
@@ -62,5 +62,4 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
         }
         return matches;
     }
-
 }

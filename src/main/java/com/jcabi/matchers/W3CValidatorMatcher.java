@@ -32,7 +32,7 @@ final class W3CValidatorMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Ctor.
-     * @param val The Validator to use.
+     * @param val The Validator to use
      */
     W3CValidatorMatcher(final Validator val) {
         super();
@@ -59,5 +59,4 @@ final class W3CValidatorMatcher extends TypeSafeMatcher<String> {
         }
         return matches;
     }
-
 }
