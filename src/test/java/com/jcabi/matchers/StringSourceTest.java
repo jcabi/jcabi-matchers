@@ -29,7 +29,6 @@ final class StringSourceTest {
 
     @Test
     void formatIncomingNode() throws Exception {
-        final String sep = System.lineSeparator();
         MatcherAssert.assertThat(
             "should equals to the node",
             new StringSource(
@@ -44,12 +43,13 @@ final class StringSourceTest {
                         )
                     )
             ).toString(),
+            // @checkstyle ProhibitLineSeparatorInStringsCheck (7 lines)
             Matchers.equalTo(
                 StringUtils.join(
                     "<nodeName><?some instruction?>",
-                    "<!--comment-->", sep, "   ",
-                    "<a>withText</a>", sep, "   <a/>", sep, "   <a withArg=\"value\"/>", sep,
-                    "</nodeName>", sep
+                    "<!--comment-->\n   ",
+                    "<a>withText</a>\n   <a/>\n   <a withArg=\"value\"/>\n",
+                    "</nodeName>\n"
                 )
             )
         );
