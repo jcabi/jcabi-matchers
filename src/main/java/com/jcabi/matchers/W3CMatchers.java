@@ -11,7 +11,6 @@ import org.hamcrest.Matcher;
 
 /**
  * Matchers for validating HTML and CSS content.
- *
  * @since 0.1
  */
 @ToString
@@ -40,7 +39,7 @@ public final class W3CMatchers {
 
     /**
      * Matcher for validating HTML content against W3C validation servers.
-     * @return Matcher for validating HTML content.
+     * @return Matcher for validating HTML content
      */
     public static Matcher<String> validHtml() {
         return W3CMatchers.HTML;
@@ -48,10 +47,9 @@ public final class W3CMatchers {
 
     /**
      * Matcher for validating CSS content against W3C validation servers.
-     * @return Matcher for validating CSS content.
+     * @return Matcher for validating CSS content
      */
     public static Matcher<String> validCss() {
         return W3CMatchers.CSS;
     }
-
 }

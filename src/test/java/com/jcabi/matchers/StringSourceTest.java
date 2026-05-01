@@ -34,8 +34,7 @@ final class StringSourceTest {
             new StringSource(
                 DocumentBuilderFactory
                     .newInstance()
-                    .newDocumentBuilder()
-                    .parse(
+                    .newDocumentBuilder().parse(
                         new ByteArrayInputStream(
                             StringUtils.join(
                                 "<nodeName><?some instruction?><!--comment-->",
@@ -44,6 +43,7 @@ final class StringSourceTest {
                         )
                     )
             ).toString(),
+            // @checkstyle ProhibitLineSeparatorInStringsCheck (7 lines)
             Matchers.equalTo(
                 StringUtils.join(
                     "<nodeName><?some instruction?>",
@@ -54,5 +54,4 @@ final class StringSourceTest {
             )
         );
     }
-
 }

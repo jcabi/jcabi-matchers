@@ -30,7 +30,7 @@ final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Public ctor.
-     * @param regex The regular expression to match against.
+     * @param regex The regular expression to match against
      */
     RegexMatchingPatternMatcher(final String regex) {
         super();
@@ -47,5 +47,4 @@ final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
     public boolean matchesSafely(final String item) {
         return item.matches(this.pattern);
     }
-
 }

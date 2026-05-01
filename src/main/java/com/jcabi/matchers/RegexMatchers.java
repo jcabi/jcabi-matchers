@@ -6,6 +6,7 @@ package com.jcabi.matchers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.regex.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hamcrest.CoreMatchers;
@@ -13,7 +14,6 @@ import org.hamcrest.Matcher;
 
 /**
  * Convenient matchers for checking Strings against regular expressions.
- *
  * @since 1.3
  */
 @ToString
@@ -73,7 +73,7 @@ public final class RegexMatchers {
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
     public static Matcher<String> containsPattern(final String pattern) {
-        return new RegexContainingPatternMatcher(pattern);
+        return new RegexContainingPatternMatcher(Pattern.compile(pattern));
     }
 
     /**
@@ -113,9 +113,8 @@ public final class RegexMatchers {
         final Collection<Matcher<? super String>> matchers =
             new ArrayList<>(patterns.length);
         for (final String pattern : patterns) {
-            matchers.add(new RegexContainingPatternMatcher(pattern));
+            matchers.add(new RegexContainingPatternMatcher(Pattern.compile(pattern)));
         }
         return matchers;
     }
-
 }
