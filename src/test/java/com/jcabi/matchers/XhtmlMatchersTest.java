@@ -45,6 +45,66 @@ final class XhtmlMatchersTest {
     }
 
     @Test
+    void matchesWithoutPrefixWhenDefaultNamespace() {
+        MatcherAssert.assertThat(
+            "should match unprefixed XPath against element in default namespace",
+            "<a xmlns='foo'><b/></a>",
+            XhtmlMatchers.hasXPath("/a/b")
+        );
+    }
+
+    @Test
+    void matchesWithoutPrefixForXhtmlDefaultNamespace() {
+        MatcherAssert.assertThat(
+            "should match unprefixed XPath against XHTML in default namespace",
+            StringUtils.join(
+                "<html xmlns='http://www.w3.org/1999/xhtml'>",
+                "<body><p>hello</p></body></html>"
+            ),
+            XhtmlMatchers.hasXPath("/html/body/p[.='hello']")
+        );
+    }
+
+    @Test
+    void matchesWithoutPrefixForXhtmlInputStream() {
+        MatcherAssert.assertThat(
+            "should match unprefixed XPath when input is an InputStream",
+            IOUtils.toInputStream(
+                "<root xmlns='foo'><child>x</child></root>",
+                StandardCharsets.UTF_8
+            ),
+            XhtmlMatchers.hasXPath("/root/child[.='x']")
+        );
+    }
+
+    @Test
+    void matchesWithoutPrefixForXhtmlReader() {
+        MatcherAssert.assertThat(
+            "should match unprefixed XPath when input is a Reader",
+            new InputStreamReader(
+                IOUtils.toInputStream(
+                    "<root xmlns='bar'><child>y</child></root>",
+                    StandardCharsets.UTF_8
+                ),
+                StandardCharsets.UTF_8
+            ),
+            XhtmlMatchers.hasXPath("/root/child[.='y']")
+        );
+    }
+
+    @Test
+    void prefixedXPathStillMatchesDefaultNamespace() {
+        MatcherAssert.assertThat(
+            "should let prefixed XPath match elements in a default namespace",
+            "<messages xmlns='http://n.validator.nu/messages/'><info/></messages>",
+            XhtmlMatchers.hasXPath(
+                "//ns1:messages/ns1:info",
+                "http://n.validator.nu/messages/"
+            )
+        );
+    }
+
+    @Test
     void matchesPlainStringWithNamespace() {
         MatcherAssert.assertThat(
             "should has xpath",
