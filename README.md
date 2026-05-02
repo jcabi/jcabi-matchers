@@ -19,7 +19,7 @@ First, you add this to your `pom.xml`:
 <dependency>
   <groupId>com.jcabi</groupId>
   <artifactId>jcabi-matchers</artifactId>
-  <version>1.8.0</version>
+  <version>1.9.0</version>
 </dependency>
 ```
 
