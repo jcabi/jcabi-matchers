@@ -1,106 +1,111 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
     <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>jcabi-matchers &#x2013; Regular Expression Hamcrest Matchers</title>
-        <link media="all" rel="stylesheet" type="text/css" href="./css/jcabi.css"/>
-                    <meta name="author" content="Carlos Miranda" />
-                            <script>
-                var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', 'UA-1963507-23']);
-                _gaq.push(['_trackPageview']);
-                (function() {
-                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                })();
-            </script>
-                                            <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regular Expression Hamcrest Matchers – jcabi-matchers</title>
+        <link media="all" rel="stylesheet" type="text/css" href="./css/jcabi.css">
+                    <meta name="author" content="Carlos Miranda">
+                                            <link rel="icon" href="https://www.jcabi.com/favicon.ico">
+                                        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1963507-23"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-1963507-23');
+                </script>
+                            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin=anonymous></script>
         <script src="./js/jcabi.js"></script>
     </head>
     <body>
                 <div class="page" itemscope="" itemtype="http://schema.org/BlogPosting">
             <nav class="menu-section">
-                <ul class="menu" id="menu">
-                                                                                    <li>
-                            <span>Overview</span>
-                                                            <ul>
-                                                                                                    <li >
-                            <span>                        <a href="index.html" title="Introduction">Introduction</a>
+                <div>
+                    <ul class="menu" id="menu">
+                                                                                                    <li>
+                                <span>Overview</span>
+                                                                    <ul>
+                                                                                                                <li >
+                                <span>                        <a href="index.html" title="Introduction">Introduction</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="apidocs-1.8.0/index.html" title="JavaDoc 1.8.0">JavaDoc 1.8.0</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="apidocs-1.9.0/index.html" title="JavaDoc 1.9.0">JavaDoc 1.9.0</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="jacoco/index.html" title="Test coverage">Test coverage</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="jacoco/index.html" title="Test coverage">Test coverage</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="https://github.com/jcabi/jcabi-matchers/releases" title="Release History">Release History</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="https://github.com/jcabi/jcabi-matchers/releases" title="Release History">Release History</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                        </ul>
-                                                    </li>
-                                            <li>
-                            <span>Examples</span>
-                                                            <ul>
-                                                                                                    <li >
-                            <span>                        <a href="xhtml-matchers.html" title="XHTML Matchers">XHTML Matchers</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                    </ul>
+                                                            </li>
+                                                    <li>
+                                <span>Examples</span>
+                                                                    <ul>
+                                                                                                                <li >
+                                <span>                        <a href="xhtml-matchers.html" title="XHTML Matchers">XHTML Matchers</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="w3c-matchers.html" title="W3C Matchers">W3C Matchers</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="w3c-matchers.html" title="W3C Matchers">W3C Matchers</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li  class='active' >
-                            <span>                        <a href="regex-matchers.html" title="Regex Matchers">Regex Matchers</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li  class='active' >
+                                <span>                        <a href="regex-matchers.html" title="Regex Matchers">Regex Matchers</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="broken-links.html" title="XML/HTML broken links">XML/HTML broken links</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="broken-links.html" title="XML/HTML broken links">XML/HTML broken links</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="jaxb-converter.html" title="JAXB Converter">JAXB Converter</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="jaxb-converter.html" title="JAXB Converter">JAXB Converter</a>
         </span>
-                                                                                                                                                                <ul>
-                                                                    </ul>
-                                                    </li>
-                                                                                        </ul>
-                                                    </li>
-                                            <li>
-                            <span>Project Documentation</span>
-                                                            <ul>
-                                                                                                    <li >
-                            <span>                        <a href="project-info.html" title="Project Information">Project Information</a>
+                                                                                                                                                                                        <ul>
+                                                                            </ul>
+                                                            </li>
+                                                                                                    </ul>
+                                                            </li>
+                                                    <li>
+                                <span>Project Documentation</span>
+                                                                    <ul>
+                                                                                                                <li >
+                                <span>                        <a href="project-info.html" title="Project Information">Project Information</a>
         </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </li>
-                                                                                                                        <li >
-                            <span>                        <a href="project-reports.html" title="Project Reports">Project Reports</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </li>
+                                                                                                                                        <li >
+                                <span>                        <a href="project-reports.html" title="Project Reports">Project Reports</a>
         </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </li>
-                                                                                        </ul>
-                                                    </li>
-                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                    </ul>
+                                                            </li>
+                                            </ul>
+                </div>
+                <div class="signature">
+                    Made by
+                    <a href="https://github.com/jcabi/jcabi-maven-skin">jcabi-maven-skin</a>
+                    2.0.1.
+                </div>
             </nav>
             <div class="right-side">
                 <main>
@@ -108,24 +113,21 @@
                         <header>
                             <div class="logo">
                                 <a href="../"
-                                    title=" logo ">
-                                    <img src="../logo-square.svg"
+                                    title=" jcabi ">
+                                                                        <img src="https://jcabi.com/logo-square.svg"
                                         alt="jcabi"
                                                                                     width="64"
                                                                                                                             height="64"
                                                                                 itemprop="image"
-                                    />
-                                </a>
+                                    >                                </a>
                             </div>
                             <ul class="badges">
                                 <li>
-                                    <strong itemprop="version">1.8.0</strong>
+                                    <strong itemprop="version">1.9.0</strong>
                                 </li>
                                 <li>
-                                    
-                                    <time itemprop="datePublished" datetime="2024-12-05T11:44:48Z">
-                                        
-                                        05-Dec-2024
+                                    <time itemprop="datePublished" datetime="2026-05-02">
+                                        2-May-2026
                                     </time>
                                 </li>
                                 <li class="menu-button">menu</li>
@@ -133,15 +135,14 @@
                         </header>
                         <div id="here-goes-menu" class="menu-off"></div>
                                                                             <a href="https://github.com/jcabi/jcabi-matchers">
-                                <img src="https://www.jcabi.com/fork-me.svg" class="fork-me"/>
+                                <img src="https://www.jcabi.com/fork-me.svg" class="fork-me">
                             </a>
                                                 <article itemprop="articleBody">
-                            <section>
-<h2><a name="Regular_Expression_Hamcrest_Matchers"></a>Regular Expression Hamcrest Matchers</h2>
-<p><a href="./apidocs-1.8.0/com/jcabi/matchers/RegexMatchers.html"><code>RegexMatchers</code></a> is a utility class with static methods that create Hamcrest matchers that can check Strings against regular expressions, as used in unit tests.</p>
+                            <section><a id="Regular_Expression_Hamcrest_Matchers"></a>
+<h1>Regular Expression Hamcrest Matchers</h1>
+<p><a href="./apidocs-1.9.0/com/jcabi/matchers/RegexMatchers.html"><code>RegexMatchers</code></a> is a utility class with static methods that create Hamcrest matchers that can check Strings against regular expressions, as used in unit tests.</p>
 <p>You can check if an entire string matches a certain regular expression in the following manner:</p>
-<div class="source">
-<pre>import com.jcabi.matchers.RegexMatchers;
+<pre><code>import com.jcabi.matchers.RegexMatchers;
 import org.hamcrest.MatcherAssert;
 public class FooTest {
   @Test
@@ -151,10 +152,9 @@ public class FooTest {
       RegexMatchers.matchesPattern(&quot;[a-c]+\\d{3}&quot;)
     );
   }
-}</pre></div>
+}</code></pre>
 <p>You may also check if a string contains a substring matching a regular expression, as shown below:</p>
-<div class="source">
-<pre>import com.jcabi.matchers.RegexMatchers;
+<pre><code>import com.jcabi.matchers.RegexMatchers;
 import org.hamcrest.MatcherAssert;
 public class FooTest {
   @Test
@@ -164,10 +164,9 @@ public class FooTest {
       RegexMatchers.containsPattern(&quot;ar45&quot;)
     );
   }
-}</pre></div>
+}</code></pre>
 <p>These dependencies you will need in your <code>pom.xml</code>:</p>
-<div class="source">
-<pre>&lt;dependency&gt;
+<pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.hamcrest&lt;/groupId&gt;
   &lt;artifactId&gt;hamcrest-library&lt;/artifactId&gt;
   &lt;version&gt;1.3&lt;/version&gt;
@@ -178,17 +177,17 @@ public class FooTest {
   &lt;artifactId&gt;hamcrest-core&lt;/artifactId&gt;
   &lt;version&gt;1.3&lt;/version&gt;
   &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;</pre></div></section>
+&lt;/dependency&gt;</code></pre></section>
                         </article>
                     </div>
                 </main>
                 <footer class="legal-notes">
                     <div>
                         Copyright &#169;
-                                                                            2012-2024
+                                                                            2012-2026
                                             </div>
                     <div>jcabi.com, All Rights Reserved.</div>
-                    <div><a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a>.</div>
+                    <div><a href="https://maven.apache.org/privacy-policy.html">Privacy Policy</a>.</div>
                 </footer>
             </div>
         </div>
