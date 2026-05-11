@@ -4,14 +4,14 @@
  */
 package com.jcabi.matchers;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBIntrospector;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 import java.io.StringWriter;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.JAXBIntrospector;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 import lombok.EqualsAndHashCode;
@@ -23,10 +23,10 @@ import lombok.ToString;
  * <p>The object has to be annotated with JAXB annotations
  * in order to be convertible. Let's consider an example JAXB-annotated class:
  *
- * <pre> import javax.xml.bind.annotation.XmlAccessType;
- * import javax.xml.bind.annotation.XmlAccessorType;
- * import javax.xml.bind.annotation.XmlElement;
- * import javax.xml.bind.annotation.XmlRootElement;
+ * <pre> import jakarta.xml.bind.annotation.XmlAccessType;
+ * import jakarta.xml.bind.annotation.XmlAccessorType;
+ * import jakarta.xml.bind.annotation.XmlElement;
+ * import jakarta.xml.bind.annotation.XmlRootElement;
  * &#64;XmlRootElement(name = "employee")
  * &#64;XmlAccessorType(XmlAccessType.NONE)
  * public class Employee {
