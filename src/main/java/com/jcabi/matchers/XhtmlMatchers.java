@@ -5,14 +5,15 @@
 package com.jcabi.matchers;
 
 import com.jcabi.xml.XPathContext;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Scanner;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.Source;
 import lombok.EqualsAndHashCode;
@@ -34,7 +35,7 @@ import org.w3c.dom.Node;
  */
 @ToString
 @EqualsAndHashCode
-@SuppressWarnings("PMD.ProhibitPublicStaticMethods")
+@SuppressWarnings({"PMD.ProhibitPublicStaticMethods", "PMD.LinguisticNaming"})
 public final class XhtmlMatchers {
 
     /**
@@ -150,7 +151,7 @@ public final class XhtmlMatchers {
      * @since 1.8.0
      */
     public static <T> Matcher<T> hasXPaths(final Iterable<String> xpaths) {
-        final Collection<Matcher<? super T>> list = new LinkedList<>();
+        final Collection<Matcher<? super T>> list = new ArrayList<>(0);
         for (final String xpath : xpaths) {
             list.add(XhtmlMatchers.hasXPath(xpath));
         }
@@ -163,14 +164,12 @@ public final class XhtmlMatchers {
      * @return The reader content, in String form
      */
     private static String readAsString(final Reader reader) {
-        final String result;
-        try (Scanner scanner = new Scanner(reader).useDelimiter("\\A")) {
-            if (scanner.hasNext()) {
-                result = scanner.next();
-            } else {
-                result = "";
-            }
+        final StringWriter writer = new StringWriter();
+        try {
+            reader.transferTo(writer);
+        } catch (final IOException ex) {
+            throw new IllegalStateException("Failed to read the source", ex);
         }
-        return result;
+        return writer.toString();
     }
 }

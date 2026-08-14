@@ -24,7 +24,7 @@ final class JaxbConverterTest {
         MatcherAssert.assertThat(
             "should has xpath",
             JaxbConverter.the(new JaxbConverterTest.Employee()),
-            XhtmlMatchers.hasXPath("/employee/name[.='\u0443\u0440\u0430']")
+            XhtmlMatchers.hasXPath("/employee/name[.='ура']")
         );
     }
 
@@ -113,7 +113,7 @@ final class JaxbConverterTest {
          */
         @XmlElement(name = "name")
         public String getName() {
-            return "\u0443\u0440\u0430";
+            return "ура";
         }
     }
 
@@ -137,7 +137,7 @@ final class JaxbConverterTest {
          */
         @XmlElement(namespace = JaxbConverterTest.Foo.NAMESPACE)
         public String getName() {
-            return "Foo: \u0443\u0440\u0430";
+            return "Foo: ура";
         }
     }
 
@@ -156,7 +156,7 @@ final class JaxbConverterTest {
          */
         @XmlElement
         public String getName() {
-            return "Bar: \u0443\u0440\u0430";
+            return "Bar: ура";
         }
     }
 }

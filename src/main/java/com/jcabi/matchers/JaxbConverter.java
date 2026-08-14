@@ -124,7 +124,7 @@ public final class JaxbConverter {
     private static Marshaller marshaller(final JAXBContext ctx)
         throws JAXBException {
         final Marshaller mrsh = ctx.createMarshaller();
-        mrsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        mrsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         return mrsh;
     }
 
@@ -141,7 +141,6 @@ public final class JaxbConverter {
         if (type == null) {
             throw new AssertionError(
                 String.format(
-                    // @checkstyle LineLength (1 line)
                     "@XmlType or @XmlRootElement annotation required at %s",
                     obj.getClass().getName()
                 )

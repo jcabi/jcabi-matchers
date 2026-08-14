@@ -15,7 +15,7 @@ import org.hamcrest.core.AllOf;
  * Matcher that test if all matchers matches, but print info about only that
  * ones who failed.
  *
- * Based in {@link AllOf}.
+ * <p>Based in {@link AllOf}.
  *
  * @param <T> Type of argument
  * @since 0.2.6

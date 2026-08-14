@@ -22,7 +22,7 @@ final class StringSourceTest {
     void formatsIncomingXmlDocument() {
         MatcherAssert.assertThat(
             "should contains a string",
-            new StringSource("<a><b>\u0443\u0440\u0430!</b></a>").toString(),
+            new StringSource("<a><b>ура!</b></a>").toString(),
             Matchers.containsString("&#443;")
         );
     }

@@ -23,7 +23,6 @@ import org.w3c.dom.Element;
  * Test case for {@link XhtmlMatchers}.
  * @since 0.1
  */
-@SuppressWarnings("PMD.TooManyMethods")
 final class XhtmlMatchersTest {
 
     @Test
@@ -176,9 +175,9 @@ final class XhtmlMatchersTest {
             "should converts text to xml",
             StringUtils.join(
                 "<html xmlns='http://www.w3.org/1999/xhtml'><body>",
-                "<p>\u0443</p></body></html>"
+                "<p>у</p></body></html>"
             ),
-            XhtmlMatchers.hasXPath("/xhtml:html/xhtml:body/xhtml:p[.='\u0443']")
+            XhtmlMatchers.hasXPath("/xhtml:html/xhtml:body/xhtml:p[.='у']")
         );
     }
 
@@ -186,7 +185,7 @@ final class XhtmlMatchersTest {
     void convertsTextToXmlWithUnicode() {
         MatcherAssert.assertThat(
             "should converts text to xml with unicode",
-            "<a>\u8514  &#8250;</a>",
+            "<a>蔔  &#8250;</a>",
             XhtmlMatchers.hasXPath("/a")
         );
     }
@@ -211,15 +210,15 @@ final class XhtmlMatchersTest {
                 + "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'"
                 + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"
                 + "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>"
-                + "<body><p>\u0443\u0440\u0430!</p></body>"
+                + "<body><p>ура!</p></body>"
                 + "</html>",
             Matchers.allOf(
                 XhtmlMatchers.hasXPath("/*"),
                 XhtmlMatchers.hasXPath("//*"),
                 XhtmlMatchers.hasXPath(
-                    "/xhtml:html/xhtml:body/xhtml:p[.='\u0443\u0440\u0430!']"
+                    "/xhtml:html/xhtml:body/xhtml:p[.='ура!']"
                 ),
-                XhtmlMatchers.hasXPath("//xhtml:p[contains(., '\u0443')]")
+                XhtmlMatchers.hasXPath("//xhtml:p[contains(., 'у')]")
             )
         );
     }

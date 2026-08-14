@@ -34,7 +34,6 @@ final class StringSource extends DOMSource {
     /**
      * Public ctor.
      * @param node The node
-     * @checkstyle ConstructorsCodeFreeCheck (4 lines)
      */
     StringSource(final Node node) {
         this(node, StringSource.serialize(node));
@@ -43,7 +42,6 @@ final class StringSource extends DOMSource {
     /**
      * Public ctor.
      * @param text The content of the document
-     * @checkstyle ConstructorsCodeFreeCheck (4 lines)
      */
     StringSource(final String text) {
         this(new XMLDocument(text).deepCopy(), text);
@@ -65,8 +63,7 @@ final class StringSource extends DOMSource {
         final int length = this.xml.length();
         for (int pos = 0; pos < length; ++pos) {
             final char chr = this.xml.charAt(pos);
-            // @checkstyle MagicNumber (1 line)
-            if (chr > 0x7f) {
+            if (chr > 0x7F) {
                 buf.append("&#").append(
                     Integer.toHexString(chr).toUpperCase(Locale.ENGLISH)
                 ).append(';');

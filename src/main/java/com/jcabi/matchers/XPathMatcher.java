@@ -5,11 +5,12 @@
 package com.jcabi.matchers;
 
 import com.jcabi.xml.XMLDocument;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.Source;
@@ -136,14 +137,12 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
      * @return Reader content
      */
     private static String read(final Reader reader) {
-        final String result;
-        try (Scanner scanner = new Scanner(reader).useDelimiter("\\A")) {
-            if (scanner.hasNext()) {
-                result = scanner.next();
-            } else {
-                result = "";
-            }
+        final StringWriter writer = new StringWriter();
+        try {
+            reader.transferTo(writer);
+        } catch (final IOException ex) {
+            throw new IllegalStateException("Failed to read the source", ex);
         }
-        return result;
+        return writer.toString();
     }
 }

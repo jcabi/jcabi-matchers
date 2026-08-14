@@ -12,8 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hamcrest.BaseMatcher;
@@ -26,6 +26,19 @@ import org.hamcrest.Description;
 @ToString
 @EqualsAndHashCode(callSuper = false, of = "home")
 public final class NoBrokenLinks extends BaseMatcher<Response> {
+
+    /**
+     * XPath query that finds all links in a document.
+     */
+    private static final String LINKS = String.join(
+        " | ",
+        "//head/link/@href",
+        "//body//a/@href",
+        "//body//img/@src",
+        "//xhtml:img/@src",
+        "//xhtml:a/@href",
+        "//xhtml:link/@href"
+    );
 
     /**
      * Home page.
@@ -44,7 +57,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
     public NoBrokenLinks(final URI uri) {
         super();
         this.home = uri;
-        this.broken = new LinkedList<>();
+        this.broken = new ArrayList<>(0);
     }
 
     @Override
@@ -69,13 +82,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
      */
     private void check(final Response response) {
         final Collection<String> links = new XmlResponse(response).xml().xpath(
-            new StringBuilder("//head/link/@href")
-                .append(" | //body//a/@href")
-                .append(" | //body//img/@src")
-                .append(" | //xhtml:img/@src")
-                .append(" | //xhtml:a/@href")
-                .append(" | //xhtml:link/@href")
-                .toString()
+            NoBrokenLinks.LINKS
         );
         Logger.debug(
             this, "#assertThat(): %d links found: %[list]s",
