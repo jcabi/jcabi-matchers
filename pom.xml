@@ -185,9 +185,6 @@
             <artifactId>qulice-maven-plugin</artifactId>
             <version>0.30.11</version>
             <configuration>
-              <excludes>
-                <exclude>duplicatefinder:.*</exclude>
-              </excludes>
               <license>file:${basedir}/LICENSE.txt</license>
             </configuration>
           </plugin>
