@@ -158,11 +158,6 @@ public final class XhtmlMatchers {
         return new AllOfThatPrintsOnlyWrongMatchers<>(list);
     }
 
-    /**
-     * Reads an entire reader's contents into a string.
-     * @param reader The stream to read
-     * @return The reader content, in String form
-     */
     private static String readAsString(final Reader reader) {
         final StringWriter writer = new StringWriter();
         try {

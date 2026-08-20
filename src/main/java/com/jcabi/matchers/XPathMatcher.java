@@ -83,16 +83,6 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
             .appendText(this.xpath);
     }
 
-    /**
-     * Build the XML source for the input. When the XPath uses no namespace
-     * prefix, default-namespace declarations ({@code xmlns="..."}) are
-     * stripped from text-based inputs so that elements declared in a
-     * default namespace can be matched without requiring a prefix
-     * (see issue #34). Prefixed XPath queries and {@link Source}/{@link Node}
-     * inputs are passed through unchanged.
-     * @param input The input value
-     * @return XML source ready for XPath evaluation
-     */
     private Source source(final T input) {
         final Source result;
         if (XPathMatcher.PREFIXED.matcher(this.xpath).find()
@@ -108,12 +98,6 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
         return result;
     }
 
-    /**
-     * Read the input as text, mirroring {@link XhtmlMatchers#xhtml(Object)}
-     * for non-{@link Source}/{@link Node} inputs.
-     * @param input The input value
-     * @return Text representation of the input
-     */
     private static String asText(final Object input) {
         final String text;
         if (input instanceof InputStream) {
@@ -131,11 +115,6 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
         return text;
     }
 
-    /**
-     * Read the entire content of a {@link Reader} as a string.
-     * @param reader The reader to read
-     * @return Reader content
-     */
     private static String read(final Reader reader) {
         final StringWriter writer = new StringWriter();
         try {
