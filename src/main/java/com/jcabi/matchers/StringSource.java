@@ -74,6 +74,11 @@ final class StringSource extends DOMSource {
         return buf.toString();
     }
 
+    /**
+     * Serialize a DOM node to XML string.
+     * @param node The node to serialize
+     * @return XML representation
+     */
     private static String serialize(final Node node) {
         final StringWriter writer = new StringWriter();
         try {

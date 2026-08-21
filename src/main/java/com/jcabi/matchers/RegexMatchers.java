@@ -103,6 +103,11 @@ public final class RegexMatchers {
             .allOf(createContainingMatchers(patterns));
     }
 
+    /**
+     * Creates a {@link Collection} of {@link Matcher}'s for the given patterns.
+     * @param patterns The given patterns
+     * @return A {@link Collection} of {@link Matcher}'s
+     */
     private static Collection<Matcher<? super String>> createContainingMatchers(
         final String... patterns) {
         final Collection<Matcher<? super String>> matchers =

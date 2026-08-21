@@ -9,6 +9,7 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.JAXBIntrospector;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import java.io.StringWriter;
 import javax.xml.namespace.QName;
@@ -114,6 +115,12 @@ public final class JaxbConverter {
         return new StringSource(writer.toString());
     }
 
+    /**
+     * Create marshaller.
+     * @param ctx The context
+     * @return Marshaller
+     * @throws JAXBException If an exception occurs inside
+     */
     private static Marshaller marshaller(final JAXBContext ctx)
         throws JAXBException {
         final Marshaller mrsh = ctx.createMarshaller();
@@ -121,6 +128,12 @@ public final class JaxbConverter {
         return mrsh;
     }
 
+    /**
+     * Get type name, if XmlType annotation is present (exception otherwise).
+     * @param obj The object
+     * @return Qualified name
+     * @see XmlElement#namespace()
+     */
     private static QName qname(final Object obj) {
         final XmlType type = XmlType.class.cast(
             obj.getClass().getAnnotation(XmlType.class)

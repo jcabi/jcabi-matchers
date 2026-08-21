@@ -76,6 +76,10 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
         );
     }
 
+    /**
+     * Check for validness.
+     * @param response Response to check
+     */
     private void check(final Response response) {
         final Collection<String> links = new XmlResponse(response).xml().xpath(
             NoBrokenLinks.LINKS
@@ -98,6 +102,11 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
         }
     }
 
+    /**
+     * Check whether the URI is valid and returns code 200.
+     * @param uri The URI to check
+     * @return TRUE if it's valid
+     */
     private static boolean isValid(final URI uri) {
         boolean valid = false;
         try {
@@ -121,6 +130,11 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
         return valid;
     }
 
+    /**
+     * Get HTTP response code from this URL.
+     * @param url The URL to get
+     * @return HTTP response code
+     */
     private static int http(final URL url) {
         int code = HttpURLConnection.HTTP_BAD_REQUEST;
         try {
