@@ -16,7 +16,7 @@ import org.hamcrest.TypeSafeMatcher;
 /**
  * Matcher for checking HTML and CSS documents against W3C validation services.
  *
- * <p>Objects of this class are immutable and thread-safe.
+ * <p>Objects of this class are immutable and thread-safe.</p>
  *
  * @since 0.1
  */
@@ -32,6 +32,7 @@ final class W3CValidatorMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Ctor.
+     *
      * @param val The Validator to use
      */
     W3CValidatorMatcher(final Validator val) {

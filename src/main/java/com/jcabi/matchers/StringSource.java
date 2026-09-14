@@ -19,7 +19,7 @@ import org.w3c.dom.Node;
 /**
  * Private class for DOM to String converting.
  *
- * <p>Objects of this class are immutable and thread-safe.
+ * <p>Objects of this class are immutable and thread-safe.</p>
  *
  * @since 0.1
  */
@@ -33,6 +33,7 @@ final class StringSource extends DOMSource {
 
     /**
      * Public ctor.
+     *
      * @param node The node
      */
     StringSource(final Node node) {
@@ -41,6 +42,7 @@ final class StringSource extends DOMSource {
 
     /**
      * Public ctor.
+     *
      * @param text The content of the document
      */
     StringSource(final String text) {
@@ -49,6 +51,7 @@ final class StringSource extends DOMSource {
 
     /**
      * Private primary ctor.
+     *
      * @param node The node
      * @param text The XML text
      */

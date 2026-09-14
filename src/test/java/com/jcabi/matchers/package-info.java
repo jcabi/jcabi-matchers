@@ -5,6 +5,7 @@
 
 /**
  * Hamcrest matchers.
+ *
  * @since 1.0
  */
 package com.jcabi.matchers;

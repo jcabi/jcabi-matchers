@@ -15,7 +15,7 @@ import org.hamcrest.core.AllOf;
  * Matcher that test if all matchers matches, but print info about only that
  * ones who failed.
  *
- * <p>Based in {@link AllOf}.
+ * <p>Based in {@link AllOf}.</p>
  *
  * @param <T> Type of argument
  * @since 0.2.6
@@ -34,6 +34,7 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
 
     /**
      * Construct that accept matchers to test.
+     *
      * @param iterable Matchers that will be tested
      */
     AllOfThatPrintsOnlyWrongMatchers(

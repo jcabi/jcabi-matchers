@@ -23,7 +23,7 @@ import org.w3c.dom.Node;
 /**
  * Matcher of XPath against a plain string.
  *
- * <p>Objects of this class are immutable and thread-safe.
+ * <p>Objects of this class are immutable and thread-safe.</p>
  *
  * @param <T> Type of param
  * @since 0.3.7
@@ -60,6 +60,7 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
 
     /**
      * Public ctor.
+     *
      * @param query The query
      * @param ctx The context
      */
@@ -101,12 +102,16 @@ public final class XPathMatcher<T> extends TypeSafeMatcher<T> {
     private static String asText(final Object input) {
         final String text;
         if (input instanceof InputStream) {
-            text = XPathMatcher.read(
-                new InputStreamReader(
+            try (
+                Reader reader = new InputStreamReader(
                     (InputStream) input,
                     StandardCharsets.UTF_8
                 )
-            );
+            ) {
+                text = XPathMatcher.read(reader);
+            } catch (final IOException ex) {
+                throw new IllegalStateException("Failed to close the reader", ex);
+            }
         } else if (input instanceof Reader) {
             text = XPathMatcher.read((Reader) input);
         } else {

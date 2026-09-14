@@ -7,20 +7,25 @@ package com.jcabi.matchers;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.StringDescription;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
  * Test case for {@link XhtmlMatchers}.
+ *
  * @since 0.1
  */
 final class XhtmlMatchersTest {
@@ -77,18 +82,22 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesWithoutPrefixForXhtmlReader() {
-        MatcherAssert.assertThat(
-            "should match unprefixed XPath when input is a Reader",
-            new InputStreamReader(
+    void matchesWithoutPrefixForXhtmlReader() throws IOException {
+        try (
+            Reader reader = new InputStreamReader(
                 IOUtils.toInputStream(
                     "<root xmlns='bar'><child>y</child></root>",
                     StandardCharsets.UTF_8
                 ),
                 StandardCharsets.UTF_8
-            ),
-            XhtmlMatchers.hasXPath("/root/child[.='y']")
-        );
+            )
+        ) {
+            MatcherAssert.assertThat(
+                "should match unprefixed XPath when input is a Reader",
+                reader,
+                XhtmlMatchers.hasXPath("/root/child[.='y']")
+            );
+        }
     }
 
     @Test
@@ -134,18 +143,22 @@ final class XhtmlMatchersTest {
     }
 
     @Test
-    void matchesReader() {
-        MatcherAssert.assertThat(
-            "should matches reader",
-            new InputStreamReader(
+    void matchesReader() throws IOException {
+        try (
+            Reader reader = new InputStreamReader(
                 IOUtils.toInputStream(
                     "<xx><y/></xx>",
                     StandardCharsets.UTF_8
                 ),
                 StandardCharsets.UTF_8
-            ),
-            XhtmlMatchers.hasXPath("/xx/y")
-        );
+            )
+        ) {
+            MatcherAssert.assertThat(
+                "should matches reader",
+                reader,
+                XhtmlMatchers.hasXPath("/xx/y")
+            );
+        }
     }
 
     @Test
@@ -253,7 +266,7 @@ final class XhtmlMatchersTest {
 
     @Test
     void hasXPathsPrintsOnlyWrongXPaths() {
-        final org.hamcrest.Matcher<String> matcher = XhtmlMatchers.hasXPaths(
+        final Matcher<String> matcher = XhtmlMatchers.hasXPaths(
             Arrays.asList(
                 "/b/file[.='some.txt']",
                 "/b/file[.='gnx.txt']",
@@ -261,8 +274,7 @@ final class XhtmlMatchersTest {
             )
         );
         matcher.matches("<b><file>some.txt</file><file>gni.txt</file></b>");
-        final org.hamcrest.StringDescription description =
-            new org.hamcrest.StringDescription();
+        final StringDescription description = new StringDescription();
         matcher.describeTo(description);
         MatcherAssert.assertThat(
             "should contain wrong xpath in error message",
@@ -273,6 +285,7 @@ final class XhtmlMatchersTest {
 
     /**
      * Foo.
+     *
      * @since 0.1
      */
     @XmlType(name = "foo", namespace = XhtmlMatchersTest.Foo.NAMESPACE)
@@ -292,6 +305,7 @@ final class XhtmlMatchersTest {
 
         /**
          * Property abc.
+         *
          * @return Value of abc
          */
         public String getAbc() {

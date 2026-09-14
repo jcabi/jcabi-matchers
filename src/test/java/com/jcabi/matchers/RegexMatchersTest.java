@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link RegexMatchers}.
+ *
  * @since 1.3
  */
 final class RegexMatchersTest {

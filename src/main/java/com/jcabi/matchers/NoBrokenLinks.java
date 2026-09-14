@@ -21,6 +21,7 @@ import org.hamcrest.Description;
 
 /**
  * Finds broken links in HTML.
+ *
  * @since 0.3.4
  */
 @ToString
@@ -52,6 +53,7 @@ public final class NoBrokenLinks extends BaseMatcher<Response> {
 
     /**
      * Public ctor.
+     *
      * @param uri Home page URI, for relative links
      */
     public NoBrokenLinks(final URI uri) {

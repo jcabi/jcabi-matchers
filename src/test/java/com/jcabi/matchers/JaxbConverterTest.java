@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link JaxbConverter}.
+ *
  * @since 0.1
  */
 final class JaxbConverterTest {
@@ -74,6 +75,7 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
      * @since 0.1
      */
     @XmlRootElement(name = "employee")
@@ -88,6 +90,7 @@ final class JaxbConverterTest {
 
         /**
          * Inject an object.
+         *
          * @param obj The object to inject
          */
         public void inject(final Object obj) {
@@ -98,6 +101,7 @@ final class JaxbConverterTest {
          * Injected object. This method is not used directly, but is used
          * during JAXB converting of this object into XML, at
          * {@link #convertsAnObjectThatHasOthersInjected()}.
+         *
          * @return The object
          */
         @XmlElement
@@ -109,6 +113,7 @@ final class JaxbConverterTest {
          * Returns a simple string. This method is not called directly, but
          * is used in {@code convertsJaxbObjectToXml()} for JAXB converting
          * of the object to XML.
+         *
          * @return The text
          */
         @XmlElement(name = "name")
@@ -119,6 +124,7 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
      * @since 0.1
      */
     @XmlType(name = "foo", namespace = JaxbConverterTest.Foo.NAMESPACE)
@@ -133,6 +139,7 @@ final class JaxbConverterTest {
 
         /**
          * Simple name.
+         *
          * @return The name
          */
         @XmlElement(namespace = JaxbConverterTest.Foo.NAMESPACE)
@@ -143,6 +150,7 @@ final class JaxbConverterTest {
 
     /**
      * Dummy test object.
+     *
      * @since 0.1
      */
     @XmlType(name = "bar")
@@ -152,6 +160,7 @@ final class JaxbConverterTest {
 
         /**
          * Simple name.
+         *
          * @return The name
          */
         @XmlElement

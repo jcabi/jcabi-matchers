@@ -7,7 +7,7 @@
  * Hamcrest matchers.
  *
  * <p>The only dependency you need is (check our latest version available
- * at <a href="http://matchers.jcabi.com">matchers.jcabi.com</a>):
+ * at <a href="http://matchers.jcabi.com">matchers.jcabi.com</a>):</p>
  *
  * <pre>&lt;dependency&gt;
  *   &lt;groupId&gt;com.jcabi&lt;/groupId&gt;

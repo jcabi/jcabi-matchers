@@ -24,7 +24,7 @@ import org.w3c.dom.Node;
 /**
  * Convenient set of matchers for XHTML/XML content.
  *
- * <p>For example:
+ * <p>For example:</p>
  *
  * <pre> MatcherAssert.assertThat(
  *   "&lt;root&gt;&lt;a&gt;hello&lt;/a&gt;&lt;/root&gt;",
@@ -48,7 +48,7 @@ public final class XhtmlMatchers {
     /**
      * Makes XHTML source presentable for testing.
      *
-     * <p>Useful method for assertions in unit tests. For example:
+     * <p>Useful method for assertions in unit tests. For example:</p>
      *
      * <pre> MatcherAssert.assertThat(
      *   XhtmlMatchers.xhtml(dom_xml_element),
@@ -59,7 +59,7 @@ public final class XhtmlMatchers {
      * an {@link InputStream} will be read as a UTF-8 document, {@link Reader}
      * will be read as a document, a {@link Source} will be used "as is",
      * {@link Node} will be printed as a text, etc. The goal is to make any
-     * input type presentable as an XML document, as much as it is possible.
+     * input type presentable as an XML document, as much as it is possible.</p>
      *
      * @param xhtml The source of data
      * @param <T> Type of source
@@ -71,14 +71,16 @@ public final class XhtmlMatchers {
         if (xhtml instanceof Source) {
             source = (Source) xhtml;
         } else if (xhtml instanceof InputStream) {
-            source = new StringSource(
-                readAsString(
-                    new InputStreamReader(
-                        (InputStream) xhtml,
-                        StandardCharsets.UTF_8
-                    )
+            try (
+                Reader reader = new InputStreamReader(
+                    (InputStream) xhtml,
+                    StandardCharsets.UTF_8
                 )
-            );
+            ) {
+                source = new StringSource(readAsString(reader));
+            } catch (final IOException ex) {
+                throw new IllegalStateException("Failed to close the reader", ex);
+            }
         } else if (xhtml instanceof Reader) {
             source = new StringSource(readAsString((Reader) xhtml));
         } else if (xhtml instanceof Node) {
@@ -91,6 +93,7 @@ public final class XhtmlMatchers {
 
     /**
      * Matches content against XPath query.
+     *
      * @param query The query
      * @param <T> Type of XML content provided
      * @return Matcher suitable for JUnit/Hamcrest matching
@@ -104,7 +107,7 @@ public final class XhtmlMatchers {
      *
      * <p>Every namespace from the {@code namespaces} list will be assigned to
      * its own prefix, in order of appearance. Start with {@code 1}.
-     * For example:
+     * For example:</p>
      *
      * <pre> MatcherAssert.assert(
      *   "&lt;foo xmlns='my-namespace'&gt;&lt;/foo&gt;",
@@ -123,6 +126,7 @@ public final class XhtmlMatchers {
 
     /**
      * Matches content against XPath query, with custom context.
+     *
      * @param query The query
      * @param ctx The context
      * @param <T> Type of XML content provided
@@ -135,6 +139,7 @@ public final class XhtmlMatchers {
 
     /**
      * Matches content against list of XPaths.
+     *
      * @param xpaths The query
      * @param <T> Type of XML content provided
      * @return Matcher suitable for JUnit/Hamcrest matching
@@ -145,6 +150,7 @@ public final class XhtmlMatchers {
 
     /**
      * Matches content against list of XPaths.
+     *
      * @param xpaths The query
      * @param <T> Type of XML content provided
      * @return Matcher suitable for JUnit/Hamcrest matching

@@ -14,7 +14,7 @@ import org.hamcrest.TypeSafeMatcher;
  * Checks if a given string contains a subsequence matching the given pattern,
  * similar to {@link java.util.regex.Matcher#find()}.
  *
- * <p>Objects of this class are immutable and thread-safe.
+ * <p>Objects of this class are immutable and thread-safe.</p>
  *
  * @since 1.3
  */
@@ -29,6 +29,7 @@ final class RegexContainingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Public ctor.
+     *
      * @param regex The compiled regular expression to match against
      */
     RegexContainingPatternMatcher(final Pattern regex) {

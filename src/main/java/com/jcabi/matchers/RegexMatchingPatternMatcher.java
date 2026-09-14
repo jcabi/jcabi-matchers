@@ -14,7 +14,7 @@ import org.hamcrest.TypeSafeMatcher;
  * Matcher of Regex patterns against a String, similar to
  * {@link String#matches(String)}.
  *
- * <p>Objects of this class are immutable and thread-safe.
+ * <p>Objects of this class are immutable and thread-safe.</p>
  *
  * @since 1.3
  */
@@ -30,6 +30,7 @@ final class RegexMatchingPatternMatcher extends TypeSafeMatcher<String> {
 
     /**
      * Public ctor.
+     *
      * @param regex The regular expression to match against
      */
     RegexMatchingPatternMatcher(final String regex) {

@@ -14,6 +14,7 @@ import org.hamcrest.Matcher;
 
 /**
  * Convenient matchers for checking Strings against regular expressions.
+ *
  * @since 1.3
  */
 @ToString
@@ -31,6 +32,7 @@ public final class RegexMatchers {
     /**
      * Checks whether a String matches at lease one of given regular
      * expressions.
+     *
      * @param patterns Regular expression patterns
      * @return Matcher suitable for JUnit/Hamcrest matching
      */
@@ -79,6 +81,7 @@ public final class RegexMatchers {
     /**
      * Checks whether a {@link String} contains a subsequence matching any of
      * the given regular expressions.
+     *
      * @param patterns The patterns to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @see java.util.regex.Matcher#find()
@@ -92,6 +95,7 @@ public final class RegexMatchers {
     /**
      * Checks whether a {@link String} contains a subsequence matching any of
      * the given regular expressions.
+     *
      * @param patterns The patterns to match against
      * @return Matcher suitable for JUnit/Hamcrest matching
      * @see java.util.regex.Matcher#find()

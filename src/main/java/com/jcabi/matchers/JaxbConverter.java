@@ -20,7 +20,7 @@ import lombok.ToString;
  * JAXB-empowered object to XML converting utility.
  *
  * <p>The object has to be annotated with JAXB annotations
- * in order to be convertible. Let's consider an example JAXB-annotated class:
+ * in order to be convertible. Let's consider an example JAXB-annotated class:</p>
  *
  * <pre> import jakarta.xml.bind.annotation.XmlAccessType;
  * import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -36,7 +36,7 @@ import lombok.ToString;
  * }</pre>
  *
  * <p>Now you want to test how it works with real data after conversion
- * to XML (in a unit test):
+ * to XML (in a unit test):</p>
  *
  * <pre> import com.jcabi.matchers.JaxbConverter;
  * import com.jcabi.matchers.XhtmlMatchers;
@@ -71,12 +71,12 @@ public final class JaxbConverter {
      * Convert an object to XML.
      *
      * <p>The method will throw {@link AssertionError} if marshalling of
-     * provided object fails for some reason.
+     * provided object fails for some reason.</p>
      *
      * <p>The name of the method is motivated by
      * <a href="http://code.google.com/p/xml-matchers/">xmlatchers</a> project
      * and their {@code XmlMatchers.the(String)} method. Looks like this name
-     * is short enough and convenient for unit tests.
+     * is short enough and convenient for unit tests.</p>
      *
      * @param object The object to convert
      * @param deps Dependencies that we should take into account
