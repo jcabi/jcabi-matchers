@@ -67,7 +67,7 @@ final class StringSource extends DOMSource {
         for (int pos = 0; pos < length; ++pos) {
             final char chr = this.xml.charAt(pos);
             if (chr > 0x7F) {
-                buf.append("&#").append(
+                buf.append("&#x").append(
                     Integer.toHexString(chr).toUpperCase(Locale.ENGLISH)
                 ).append(';');
             } else {

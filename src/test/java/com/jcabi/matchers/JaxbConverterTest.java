@@ -34,7 +34,7 @@ final class JaxbConverterTest {
         MatcherAssert.assertThat(
             "should contains a string",
             JaxbConverter.the(new JaxbConverterTest.Employee()).toString(),
-            Matchers.containsString("&#443;")
+            Matchers.containsString("&#x443;")
         );
     }
 
