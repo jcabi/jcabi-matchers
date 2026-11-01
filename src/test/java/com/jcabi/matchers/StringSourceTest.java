@@ -24,7 +24,7 @@ final class StringSourceTest {
         MatcherAssert.assertThat(
             "should contains a string",
             new StringSource("<a><b>ура!</b></a>").toString(),
-            Matchers.containsString("&#443;")
+            Matchers.containsString("&#x443;")
         );
     }
 
