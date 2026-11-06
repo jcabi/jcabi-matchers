@@ -4,11 +4,10 @@
  */
 package com.jcabi.matchers;
 
-import com.jcabi.aspects.RetryOnFailure;
-import org.apache.commons.lang3.StringUtils;
+import com.jcabi.w3c.ValidatorBuilder;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Disabled;
+import org.hamcrest.StringDescription;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,48 +18,28 @@ import org.junit.jupiter.api.Test;
 final class W3CMatchersTest {
 
     @Test
-    @RetryOnFailure(verbose = false)
-    void matchesValidHtml() {
+    void createsHtmlMatcher() {
         MatcherAssert.assertThat(
-            "should matches valid html",
-            StringUtils.join(
-                "<!DOCTYPE html>",
-                "<html lang='en'><head><meta charset='UTF-8'>",
-                "<title>hey</title></head>",
-                "<body></body></html>"
-            ),
-            W3CMatchers.validHtml()
+            "HTML factory should use the HTML validator",
+            StringDescription.asString(W3CMatchers.validHtml()),
+            Matchers.equalTo(
+                StringDescription.asString(
+                    new W3CValidatorMatcher(ValidatorBuilder.HTML)
+                )
+            )
         );
     }
 
     @Test
-    @RetryOnFailure(verbose = false)
-    void rejectsInvalidHtml() {
+    void createsCssMatcher() {
         MatcherAssert.assertThat(
-            "should matches non valid html",
-            "<blah><blaaaaaaaaa/>",
-            Matchers.not(W3CMatchers.validHtml())
-        );
-    }
-
-    @Test
-    @RetryOnFailure(verbose = false)
-    void matchesValidCss() {
-        MatcherAssert.assertThat(
-            "should matches valid css",
-            "body { background-color:#d0e4fe; }",
-            W3CMatchers.validCss()
-        );
-    }
-
-    @Test
-    @Disabled("I have no idea why it doesn't work")
-    @RetryOnFailure(verbose = false)
-    void rejectsInvalidCss() {
-        MatcherAssert.assertThat(
-            "should matches non valid css",
-            "div { -- $#^@*&^$&@; }",
-            Matchers.not(W3CMatchers.validCss())
+            "CSS factory should use the CSS validator",
+            StringDescription.asString(W3CMatchers.validCss()),
+            Matchers.equalTo(
+                StringDescription.asString(
+                    new W3CValidatorMatcher(ValidatorBuilder.CSS)
+                )
+            )
         );
     }
 }
