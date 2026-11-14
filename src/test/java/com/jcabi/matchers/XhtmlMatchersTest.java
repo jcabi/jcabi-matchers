@@ -283,6 +283,45 @@ final class XhtmlMatchersTest {
         );
     }
 
+    @Test
+    void hasXPathsDescribesOnlyLatestFailures() {
+        final Matcher<String> matcher = XhtmlMatchers.hasXPaths(
+            "/root/a", "/root/b"
+        );
+        matcher.matches("<root><b/></root>");
+        matcher.matches("<root><a/></root>");
+        MatcherAssert.assertThat(
+            "should describe only the path missing from the latest document",
+            StringDescription.asString(matcher),
+            Matchers.equalTo("(an XML document with XPath /root/b)")
+        );
+    }
+
+    @Test
+    void hasXPathsDoesNotDuplicateFailuresWhenDescribingMismatch() {
+        final Matcher<String> matcher = XhtmlMatchers.hasXPaths("/root/a");
+        final String xml = "<root/>";
+        matcher.matches(xml);
+        matcher.describeMismatch(xml, new StringDescription());
+        MatcherAssert.assertThat(
+            "should describe each failing path only once after reevaluation",
+            StringDescription.asString(matcher),
+            Matchers.equalTo("(an XML document with XPath /root/a)")
+        );
+    }
+
+    @Test
+    void hasXPathsClearsFailuresAfterSuccessfulMatch() {
+        final Matcher<String> matcher = XhtmlMatchers.hasXPaths("/root/a");
+        matcher.matches("<root/>");
+        matcher.matches("<root><a/></root>");
+        MatcherAssert.assertThat(
+            "should clear earlier failures when all paths match",
+            StringDescription.asString(matcher),
+            Matchers.equalTo("()")
+        );
+    }
+
     /**
      * Foo.
      *
