@@ -52,6 +52,7 @@ final class AllOfThatPrintsOnlyWrongMatchers<T> extends DiagnosingMatcher<T> {
 
     @Override
     public boolean matches(final Object obj, final Description mismatch) {
+        this.wrong.clear();
         boolean matches = true;
         for (final Matcher<? super T> matcher : this.matchers) {
             if (!matcher.matches(obj)) {
